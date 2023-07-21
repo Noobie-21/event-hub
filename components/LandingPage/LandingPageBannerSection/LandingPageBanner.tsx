@@ -36,7 +36,7 @@ const BannerSection = () => {
             >
               Event Hub{" "}
             </Text>
-            <Text className="text-center text-xl uppercase ">
+            <Text className="text-center text-xl uppercase text-slate-200 ">
               Events Which Make You{" "}
               <span className="text-3xl text-orange-400 font-bold font-mono">
                 Happy
@@ -46,7 +46,7 @@ const BannerSection = () => {
                 Energetic
               </span>
             </Text>
-            <Text className=" font-bold uppercase">
+            <Text className=" font-bold uppercase text-slate-200">
               What are you waiting for, Join us and Enjoy Event
             </Text>
 

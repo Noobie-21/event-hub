@@ -1,14 +1,16 @@
+import { authModalState } from "@/atoms/AuthModalAtom";
 import { auth, firestore } from "@/firebase/firebaseConfig";
 import { Button, Image } from "@chakra-ui/react";
 import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import React, { useEffect } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSetRecoilState } from "recoil";
 
 const OAuthButton = () => {
     const [signInWithGoogle, userCred, loading, error] =
         useSignInWithGoogle(auth);
 
-
+    const setAuthModalState = useSetRecoilState(authModalState)
 
     const handleSubmit = async () => {
         const user = await signInWithGoogle()
@@ -25,6 +27,10 @@ const OAuthButton = () => {
                 userId: userData.uid
             });
         }
+        setAuthModalState(prev => ({
+            ...prev,
+            open: false
+        }))
     }
 
     return (
