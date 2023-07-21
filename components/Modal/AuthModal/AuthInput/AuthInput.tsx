@@ -7,7 +7,7 @@ import Register from "../../Register/Register";
 const AuthInput = () => {
   const modalState = useRecoilValue(authModalState);
   return (
-    <Stack spacing="4">
+    <Stack spacing="4" className="w-full px-6">
       <Box py={{ base: "0", sm: "8" }} px={{ base: "4", sm: "4" }}>
         {modalState.view === "login" && <Login />}
         {modalState.view === "register" && <Register />}

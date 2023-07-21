@@ -1,19 +1,18 @@
 "use client";
+import { authModalState } from "@/atoms/AuthModalAtom";
+import { auth } from "@/firebase/firebaseConfig";
 import {
   Button,
   FormControl,
   FormLabel,
   HStack,
+  Input,
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { Input } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Link from "next/link";
-import { useSetRecoilState } from "recoil";
-import { authModalState } from "@/atoms/AuthModalAtom";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "@/firebase/firebaseConfig";
+import { useSetRecoilState } from "recoil";
 
 type Props = {};
 
@@ -34,14 +33,27 @@ const Login = (props: Props) => {
       ...changeInInput,
     }));
   };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    try {
-      signInWithEmailAndPassword(data.email, data.password);
-    } catch (error: any) {
+    await signInWithEmailAndPassword(data.email, data.password);
+    // console.log(userError?.code, ": Error while login");
+    if (
+      userError?.code === "auth/wrong-password" ||
+      userError?.code === "auth/too-many-requests"
+    ) {
       setError(true);
-      console.log(error.message);
+      setFormError("Please check the credential");
+    } else if (userError?.code === "auth/user-not-found") {
+      setError(true);
+      setFormError("Please check the credential");
     }
+
+    setAuthModalState((prev) => ({
+      ...prev,
+      open: false,
+    }));
+
+    // console.log("UserLogIn : ", userLogIn);
   };
   return (
     <Stack spacing="6">
@@ -49,7 +61,7 @@ const Login = (props: Props) => {
         <Stack spacing="5">
           {error && (
             <Text className="text-center text-red-600 text-lg">
-              {userError?.message}
+              {fromError}
             </Text>
           )}
           <FormControl>

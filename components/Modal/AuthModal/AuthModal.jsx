@@ -41,13 +41,16 @@ const AuthModal = () => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader textAlign="center">
-            {modalState.view === "login" && "Login"}
-            {modalState.view === "register" && "Sign Up"}
+            {modalState.view === "login" && "WELCOME BACK 😋"}
+            {modalState.view === "register" && "WELCOME "}
             {modalState.view === "resetPassword" && "Reset Password"}
           </ModalHeader>
+
+
           <ModalCloseButton />
-          <ModalBody className="flex flex-col items-center justify-center">
-            <Flex className="flex-col items-center justify-center w-[70%]">
+
+          <ModalBody className="flex flex-col items-center justify-center ">
+            <Flex className="flex-col items-center justify-center w-full  ">
               {modalState.view === "login" || modalState.view === "register" ? (
                 <>
                   <OAuthButton />

@@ -8,11 +8,11 @@ const ColorModeSwitcher = (props) => {
 
   return (
     <IconButton
+      variant={"outline"}
       pos={"fixed"}
       top={["3"]}
       right={[0, "4"]}
       zIndex={1000}
-      transition={"all 2 linear"}
       color="current"
       onClick={toggleColorMode}
       icon={<SwitchIcon />}

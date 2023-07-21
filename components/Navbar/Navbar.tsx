@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 // import {Flex} from
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Image } from "@chakra-ui/react";
 import ColorModeSwitcher from "@/chakras/ColorModeSwitcher";
 import AuthModal from "../Modal/AuthModal/AuthModal";
 import { useSetRecoilState } from "recoil";
@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebaseConfig";
 import { signOut } from "firebase/auth";
+import MenuItems from "./MenuItem/MenuItem";
 type NavbarProps = {};
 
 const Navbar = ({}: NavbarProps) => {
@@ -22,18 +23,19 @@ const Navbar = ({}: NavbarProps) => {
       className="bg-violet-300 items-center p-2 justify-between relative"
     >
       <Link href={"/"}>
-        <Button variant={"link"} cursor={"pointer"}>
-          Event-hub
-        </Button>
+        <Image src="images/logo.png" height={"50px"} />
       </Link>
       {user ? (
-        <Button
-          variant={"outline"}
-          className="mr-14 gap-2"
-          onClick={() => signOut(auth)}
-        >
-          Logout
-        </Button>
+        // <Button
+        //   variant={"outline"}
+        //   className="mr-14 gap-2"
+        //   onClick={() => signOut(auth)}
+        // >
+        //   Logout
+        // </Button>
+        <Flex className="mr-14 gap-2">
+          <MenuItems />
+        </Flex>
       ) : (
         <Flex className="mr-14 gap-2" color={{}}>
           <AuthModal />

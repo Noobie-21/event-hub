@@ -8,15 +8,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 // react-firebase-hooks/auth
-import { Input } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/atoms/AuthModalAtom";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth, firestore } from "@/firebase/firebaseConfig";
-import { User } from "firebase/auth";
+import { Input } from "@chakra-ui/react";
 import { doc, setDoc } from "firebase/firestore";
+import React, { useState } from "react";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useSetRecoilState } from "recoil";
 
 type Props = {};
 
@@ -92,16 +90,19 @@ const Register = (props: Props) => {
           : userIsFuck.user?.photoURL,
         userId: userIsFuck.user.uid,
       });
-      setData(intitialInputState);
+      setAuthModalState((prev) => ({
+        ...prev,
+        open: false,
+      }));
       return;
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <Stack spacing="4">
-          <Stack spacing="5">
+      <form onSubmit={handleSubmit} className="w-full px-4">
+        <Stack spacing="4" className="w-full">
+          <Stack spacing={4} className=" w-full">
             <FormControl>
               <FormLabel htmlFor="name">Name</FormLabel>
               <Input
@@ -124,8 +125,8 @@ const Register = (props: Props) => {
                 id="email"
                 type="email"
                 name="email"
-                className="w-96 border border-slate-400"
                 onChange={onChange}
+                className="border-slate-400"
                 required
               />
               {error && (
