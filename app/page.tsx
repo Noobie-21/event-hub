@@ -1,12 +1,10 @@
-import ColorModeSwitcher from "@/chakra/ColorModeSwitcher";
+import ColorModeSwitcher from "@/chakras/ColorModeSwitcher";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <div>
-      <div>
-        <ColorModeSwitcher />
-      </div>
+      <div></div>
       Hello There
     </div>
   );

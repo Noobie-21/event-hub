@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "chakra/ColorModeSwitcher.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "chakras/ColorModeSwitcher.js", "components/Modal/AuthModal/AuthModal.jsx"],
   "exclude": ["node_modules"]
 }

@@ -9,7 +9,7 @@ const ColorModeSwitcher = (props) => {
   return (
     <IconButton
       pos={"fixed"}
-      top={["4"]}
+      top={["3"]}
       right={[0, "4"]}
       zIndex={1000}
       transition={"all 2 linear"}
