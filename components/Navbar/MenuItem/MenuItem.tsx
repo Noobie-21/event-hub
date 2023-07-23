@@ -1,25 +1,20 @@
 "use client";
-import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineLogout } from "react-icons/ai";
-import { BsPencilSquare, BsFillGrid1X2Fill } from "react-icons/bs";
-import { BiGridSmall } from "react-icons/bi";
+import { auth } from "@/firebase/firebaseConfig";
 import {
+  Flex,
+  IconButton,
   Menu,
   MenuButton,
-  MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-  IconButton,
+  MenuList,
   Text,
-  Button,
 } from "@chakra-ui/react";
 import { signOut } from "firebase/auth";
-import { auth } from "@/firebase/firebaseConfig";
+import Link from "next/link";
+import { AiOutlineLogout } from "react-icons/ai";
+import { BsFillGrid1X2Fill, BsPencilSquare } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const MenuItems = () => {
   return (
@@ -32,9 +27,11 @@ const MenuItems = () => {
           variant="outline"
         />
         <MenuList>
-          <MenuItem icon={<BsPencilSquare size={20} />}>
-            <Text className="font-bold uppercase">Host Event</Text>
-          </MenuItem>
+          <Link href="/host" className="font-bold uppercase flex gap-2 ml-2">
+            <BsPencilSquare size={20} className="mr-1" />
+            Host Event
+          </Link>
+
           <MenuItem icon={<BsFillGrid1X2Fill size={20} />}>
             <Text className="font-bold uppercase">All Events</Text>
           </MenuItem>

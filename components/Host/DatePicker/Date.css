@@ -1,0 +1,13 @@
+input[type="date"] {
+  padding: 16px;
+
+  font-family: "Roboto Mono", monospace;
+  font-size: 18px;
+  border-radius: 5px;
+  background: transparent;
+}
+::-webkit-calendar-picker-indicator {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
