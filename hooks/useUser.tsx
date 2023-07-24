@@ -7,12 +7,14 @@ export type userDataProps = {
   email: string;
   name: string;
   profilePicture: string;
+  about?: string;
 };
 const useUser = () => {
   const [userData, setUserData] = useState<userDataProps>({
     email: "",
     name: "",
     profilePicture: "",
+    about: "",
   });
   const [user] = useAuthState(auth);
 
@@ -24,6 +26,7 @@ const useUser = () => {
         name: userCred.data()?.name,
         email: userCred.data()?.email,
         profilePicture: userCred.data()?.profileImage,
+        about: userCred.data()?.bio_data,
       });
       return;
     }

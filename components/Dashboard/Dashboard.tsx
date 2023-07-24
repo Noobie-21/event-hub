@@ -8,13 +8,14 @@ type DashboardProps = {
   name: string;
   email: string;
   profileImage: string;
+  about?: string;
 };
-const Dashboard = ({ email, name, profileImage }: DashboardProps) => {
-  //   console.log(profileImage);
+const Dashboard = ({ email, name, profileImage, about }: DashboardProps) => {
+  console.log(about, "What do you think");
   return (
     <Flex className=" w-full flex-col h-full">
       <Flex className="w-full">
-        <DashboardBanner email={email} name={name} />
+        <DashboardBanner email={email} name={name} about={about!} />
       </Flex>
       <div className="grid grid-cols-3 p-4 gap-4">
         <div className="col-span-2 -mt-16 hover:shadow-sm  transition-all ">
@@ -25,6 +26,7 @@ const Dashboard = ({ email, name, profileImage }: DashboardProps) => {
             name={name}
             profileImage={profileImage}
             email={email}
+            about={about!}
           />
         </div>
       </div>

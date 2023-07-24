@@ -30,7 +30,7 @@ const Profile = (props: Props) => {
     }
   }, [user, userLoading]);
 
-  console.log(userData, ": User Data");
+  // console.log(userData, ": User Data");
   return (
     <Flex className="h-full w-full">
       {loading ? (
@@ -42,6 +42,7 @@ const Profile = (props: Props) => {
           email={userData.email}
           name={userData.name}
           profileImage={userData.profilePicture}
+          about={userData.about!}
         />
       )}
     </Flex>

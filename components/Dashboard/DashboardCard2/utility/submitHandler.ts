@@ -71,7 +71,7 @@ const submitHandler = async ({
   } else {
     setError(false);
     setFormError(intitialErrorState);
-    setLoading(true);
+
     try {
       if (user) {
         const creditial = EmailAuthProvider.credential(email, old_password);
@@ -98,7 +98,6 @@ const submitHandler = async ({
       }
       //   console.log(updatingError?.message);
     }
-    setLoading(false);
   }
 };
 

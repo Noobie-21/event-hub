@@ -6,8 +6,9 @@ import React, { useState } from "react";
 type DashBoardBannerProps = {
   name: string;
   email: string;
+  about?: string;
 };
-const DashboardBanner = ({ email, name }: DashBoardBannerProps) => {
+const DashboardBanner = ({ email, name, about }: DashBoardBannerProps) => {
   const [imageLoading, setImageLoading] = useState(true);
   return (
     <Flex className="w-full ">
@@ -23,9 +24,12 @@ const DashboardBanner = ({ email, name }: DashBoardBannerProps) => {
         <Text className="font-srcs text-6xl text-slate-400 pb-2 mb-4 border-b border-slate-400">
           {name}
         </Text>
-        <Text className=" text-xl text-[grey] w-[30rem] font-[cursive]">
-          {email}
-        </Text>
+        <Text className=" text-xl text-[grey]  ">{email}</Text>
+        {about && (
+          <Text className="mt-2 text-slate-200 w-[30rem] font-[cursive]">
+            {about}
+          </Text>
+        )}
       </Flex>
     </Flex>
   );

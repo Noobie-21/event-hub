@@ -10,9 +10,11 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { signOut } from "firebase/auth";
-import { auth } from "@/firebase/firebaseConfig";
+import { auth, firestore } from "@/firebase/firebaseConfig";
 import submitHandler from "./utility/submitHandler";
 import { useAuthState, useUpdatePassword } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
+import { collection, doc, updateDoc } from "firebase/firestore";
 type DashboardCard2Props = {
   name: string;
   email: string;
@@ -47,11 +49,13 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
   });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const [about, setAbout] = useState("");
   const [formError, setFormError] = useState<PasswordProps>({
     old_password: "",
     new_password: "",
     confirm_new_password: "",
   });
+  const [aboutError, setAboutError] = useState("");
   const [updatePassword, upadting, updatingError] = useUpdatePassword(auth);
   const [user] = useAuthState(auth);
 
@@ -77,6 +81,25 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
       user,
       updatingError,
     });
+  };
+
+  const updateAbout = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (about.trim().length < 1) {
+      setError(true);
+      setAboutError("Must not be empty");
+    } else {
+      setLoading(true);
+      try {
+        const userCollectionRef = doc(firestore, "Users", user?.uid!);
+        await updateDoc(userCollectionRef, {
+          bio_data: about,
+        });
+      } catch (error: any) {
+        toast.error(error.message);
+      }
+      setLoading(false);
+    }
   };
 
   // console.log(typeof updatingError, ": Password Upadting");
@@ -210,7 +233,7 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
           </Button>
         </Flex>
       </form>
-      <div>
+      <form onSubmit={updateAbout}>
         <div className=" flex flex-col text-xl ">
           <FormLabel
             htmlFor="about"
@@ -221,17 +244,24 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
           </FormLabel>
           <Textarea
             id="about"
+            value={about}
             className="border-none p-2 text-sm bg-slate-50 text-black  outline-none  rounded-sm "
             rows={4}
+            onChange={(event) => setAbout(event.target.value)}
             placeholder="Hey there i am aman you know me didn't you"
           />
+          {error && <Text className="text-red-500 text-sm">{aboutError}</Text>}
         </div>
         <Flex className="w-full justify-end mt-2 ">
-          <Button className="bg-violet-400 hover:bg-violet-300 ">
+          <Button
+            className="bg-violet-400 hover:bg-violet-300 "
+            isLoading={loading}
+            type="submit"
+          >
             Update About
           </Button>
         </Flex>
-      </div>
+      </form>
     </motion.div>
   );
 };

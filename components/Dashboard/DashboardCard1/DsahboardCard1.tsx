@@ -12,9 +12,15 @@ type DashboardCard1Props = {
   email: string;
   name: string;
   profileImage: string;
+  about?: string;
 };
 
-const DashboardCard1 = ({ name, email, profileImage }: DashboardCard1Props) => {
+const DashboardCard1 = ({
+  name,
+  email,
+  profileImage,
+  about,
+}: DashboardCard1Props) => {
   const dropIn = {
     hidden: {
       y: 230,
@@ -54,10 +60,11 @@ const DashboardCard1 = ({ name, email, profileImage }: DashboardCard1Props) => {
           {name}
           <br /> <span className="text-sm text-slate-400">{email}</span>
         </h1>
-        <p className="text-[gray] text-sm   text-center">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis
-          beatae doloremque nihil unde.
-        </p>
+        {about && (
+          <p className="text-[#0e0e0e] text-sm font-[cursive]   text-center mt-1">
+            {about}
+          </p>
+        )}
       </div>
       <div className="p-2 w-full">
         <h1 className="text-2xl text-center mb-4 mt-5 text-slate-400 uppercase underline">
