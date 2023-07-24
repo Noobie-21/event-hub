@@ -1,21 +1,12 @@
 "use client";
 
-import { EventAtomState } from "@/atoms/EventAtoms";
+import { EventAtomState, eventHubState } from "@/atoms/EventAtoms";
 import { firestore } from "@/firebase/firebaseConfig";
-import {
-  Timestamp,
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { Timestamp, doc, getDoc } from "firebase/firestore";
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
 
-type Props = {};
-
-const useEventDetails = ({}: Props) => {
+const useEventDetails = () => {
   //   console.log(id);
   const intialState = {
     eventName: "",
@@ -29,6 +20,7 @@ const useEventDetails = ({}: Props) => {
       name: "",
       email: "",
       profilePicture: "",
+      about: "",
     },
     id: "",
     location: "",
@@ -58,7 +50,12 @@ const useEventDetails = ({}: Props) => {
     }
     setLoadingData(false);
   };
-  return { eventDetails, getEventDetails, loadingData };
+  return {
+    eventDetails,
+    getEventDetails,
+    loadingData,
+    setEventDetails,
+  };
 };
 
 export default useEventDetails;

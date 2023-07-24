@@ -60,7 +60,6 @@ const submitHandler = async ({
 }: //   setEventState,
 submitHandlerArgs) => {
   const { eventName, title, desc, timeStamp, location } = eventData;
-
   const intitalFormErrorStates = {
     eventName: "",
     title: "",

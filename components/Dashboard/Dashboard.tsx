@@ -11,7 +11,6 @@ type DashboardProps = {
   about?: string;
 };
 const Dashboard = ({ email, name, profileImage, about }: DashboardProps) => {
-  console.log(about, "What do you think");
   return (
     <Flex className=" w-full flex-col h-full">
       <Flex className="w-full">

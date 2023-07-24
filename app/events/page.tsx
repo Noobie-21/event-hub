@@ -25,7 +25,6 @@ const EventsPage = (props: Props) => {
         return { ...doc.data(), id: doc.id };
       });
 
-      console.log(snapShot, "Giys awww!");
       setEventState((prev) => ({
         ...prev,
         events: snapShot as EventAtomState[],
@@ -54,13 +53,7 @@ const EventsPage = (props: Props) => {
   }, [user, userLoading]);
   return (
     <Flex className=" h-full p-10 text-sm ">
-      {loading ? (
-        <Flex className="h-screen w-full justify-center items-center">
-          <Loader />
-        </Flex>
-      ) : (
-        <Events />
-      )}
+      {loading ? <Loader /> : <Events />}
     </Flex>
   );
 };

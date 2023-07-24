@@ -10,7 +10,6 @@ type DateProps = {
 
 const Date = () => {
   const selectedDateRef = useRef<HTMLInputElement>(null);
-  console.log("htmlInputref : ", selectedDateRef);
 
   return (
     <>
@@ -20,15 +19,3 @@ const Date = () => {
 };
 
 export default Date;
-
-// export default function Date() {
-//   const [selected, setSelected] = React.useState<Date>();
-
-//   let footer = <p>Please pick a day.</p>;
-//   if (selected) {
-//     footer = <p>You picked {format(selected, "PP")}.</p>;
-//   }
-//   return (
-
-//   );
-// }

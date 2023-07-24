@@ -30,8 +30,8 @@ const TestonomialSection = () => {
       animation.start({
         opacity: 1,
         transition: {
-          duration: 2,
-          delay: 1,
+          duration: 1,
+          delay: 0.5,
         },
       });
     }

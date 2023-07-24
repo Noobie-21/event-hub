@@ -1,8 +1,10 @@
 "use client";
+import { eventHubState } from "@/atoms/EventAtoms";
 import { auth, firestore } from "@/firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useRecoilState, useSetRecoilState } from "recoil";
 export type userDataProps = {
   email: string;
   name: string;
@@ -10,29 +12,28 @@ export type userDataProps = {
   about?: string;
 };
 const useUser = () => {
-  const [userData, setUserData] = useState<userDataProps>({
-    email: "",
-    name: "",
-    profilePicture: "",
-    about: "",
-  });
   const [user] = useAuthState(auth);
+
+  const [eventState, setEventState] = useRecoilState(eventHubState);
 
   const getUser = async () => {
     const userDocRef = doc(firestore, "Users", user?.uid!);
     const userCred = await getDoc(userDocRef);
     if (userCred.exists()) {
-      setUserData({
-        name: userCred.data()?.name,
-        email: userCred.data()?.email,
-        profilePicture: userCred.data()?.profileImage,
-        about: userCred.data()?.bio_data,
-      });
+      setEventState((prev) => ({
+        ...prev,
+        userData: {
+          name: userCred.data()?.name,
+          email: userCred.data()?.email,
+          profilePicture: userCred.data()?.profileImage,
+          about: userCred.data()?.bio_data,
+        },
+      }));
       return;
     }
   };
 
-  return { userData, getUser };
+  return { eventState, getUser, setEventState };
 };
 
 export default useUser;

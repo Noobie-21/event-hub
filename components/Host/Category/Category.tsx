@@ -2,22 +2,28 @@ import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { BsChevronUp, BsChevronExpand } from "react-icons/bs";
 
-const category = [
-  "dance",
-  "music",
-  "cultural",
-  "tech",
-  "academic",
-  "public speaking",
-  "debate",
-];
+// const category = [
+//   "dance",
+//   "music",
+//   "cultural",
+//   "tech",
+//   "academic",
+//   "public speaking",
+//   "debate",
+//   "cosplay",
+// ];
 
 type CategoryProps = {
   selected: any;
   setSelected: Dispatch<SetStateAction<any>>;
+  category: string[];
 };
 
-export default function Catogary({ setSelected, selected }: CategoryProps) {
+export default function Catogary({
+  setSelected,
+  selected,
+  category,
+}: CategoryProps) {
   return (
     <div className=" w-full text-lg ">
       <Listbox value={selected} onChange={setSelected}>
@@ -34,14 +40,14 @@ export default function Catogary({ setSelected, selected }: CategoryProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute z-50  mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+            <Listbox.Options className="absolute z-50  mt-1 max-h-60 w-full  rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm overflow-auto overflow-scrollbar ">
               {category.map((person, personIdx) => (
                 <Listbox.Option
                   key={personIdx}
                   className={({ active }) =>
                     `relative  select-none py-2 pl-10 pr-4 cursor-pointer ${
                       active ? "bg-amber-100 text-amber-900" : "text-gray-900"
-                    }`
+                    } `
                   }
                   value={person}
                 >

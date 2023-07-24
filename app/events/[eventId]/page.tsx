@@ -16,9 +16,7 @@ const EventDetails = (props: Props) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [user, userLoading] = useAuthState(auth);
-  const { getEventDetails, eventDetails, loadingData } = useEventDetails(
-    params.eventId as any
-  );
+  const { getEventDetails, eventDetails, loadingData } = useEventDetails();
 
   useEffect(() => {
     setLoading(true);
@@ -34,7 +32,6 @@ const EventDetails = (props: Props) => {
       return;
     }
   }, [user, userLoading]);
-  // console.log(eventDetails, " : Event ID");
   return (
     <>
       {loading && loadingData ? (

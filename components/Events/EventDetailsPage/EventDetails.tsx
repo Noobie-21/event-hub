@@ -35,9 +35,8 @@ const EventDetailsPage = ({
   title,
   id,
 }: Props) => {
-  console.log(eventName, "Event Name");
   const [imageLoading, setImageLoading] = useState(true);
-  console.log(cretedAt, "Hello There senpai");
+
   return (
     <div className="grid grid-cols-5 w-full h-full  ">
       <Flex className="col-span-3  p-6 ">

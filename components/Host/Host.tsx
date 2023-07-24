@@ -33,7 +33,7 @@ type EventDataProps = {
   location: string;
 };
 
-const category = [
+const category: string[] = [
   "dance",
   "music",
   "cultural",
@@ -53,7 +53,8 @@ const HostEvent = () => {
   };
   const [eventData, setEventData] = useState(intialStateData);
   const [user, userLoading] = useAuthState(auth);
-  const { getUser, userData } = useUser();
+  const { getUser, eventState } = useUser();
+  const userData = eventState.userData;
 
   const [imageFile, setImageFile] = useState<File | string>("");
   const [loading, setLoading] = useState(false);
@@ -72,7 +73,6 @@ const HostEvent = () => {
   const [errorState, setFormErrorState] = useState(false);
   const router = useRouter();
   const push = router.push;
-  // console.log(typeof push, ": Router Type");
   const changeInputHandler = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -100,13 +100,12 @@ const HostEvent = () => {
       setLoading,
       setFormErrorState,
       selectedCategory,
-      userData,
       user,
+      userData,
       setEventState,
       push,
     });
   };
-  // console.log(date, "hello There");
 
   useEffect(() => {
     if (!user && !userLoading) return;
@@ -213,6 +212,7 @@ const HostEvent = () => {
                   <Catogary
                     selected={selectedCategory}
                     setSelected={setSelectedCategory}
+                    category={category}
                   />
                   {errorState && (
                     <Text className="text-[0.750rem] mt-1.2 text-red-600 ml-0.5">
