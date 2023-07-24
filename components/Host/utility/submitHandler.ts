@@ -1,8 +1,16 @@
 import { auth, firestore, storage } from "@/firebase/firebaseConfig";
 import useUser, { userDataProps } from "@/hooks/useUser";
 import { User } from "firebase/auth";
-import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
+import {
+  Timestamp,
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { NextRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -34,6 +42,7 @@ interface submitHandlerArgs {
   userData: userDataProps;
   user: User | null | undefined;
   setEventState: (value: any) => void;
+  push: (value: any) => void;
 }
 
 const submitHandler = async ({
@@ -47,6 +56,7 @@ const submitHandler = async ({
   userData,
   user,
   setEventState,
+  push,
 }: //   setEventState,
 submitHandlerArgs) => {
   const { eventName, title, desc, timeStamp, location } = eventData;
@@ -117,7 +127,6 @@ submitHandlerArgs) => {
       const collectionRef = collection(firestore, "Events");
       const eventSnapshots = await addDoc(collectionRef, {
         eventName,
-        eventId: collectionRef.id,
         title,
         location,
         desc,
@@ -130,6 +139,7 @@ submitHandlerArgs) => {
           profilePicture: userData?.profilePicture,
         },
         user: user?.uid,
+        cretedAt: serverTimestamp(),
       });
 
       const storageRef = ref(storage, `event-images/${eventSnapshots.id}`);
@@ -138,16 +148,15 @@ submitHandlerArgs) => {
 
       await updateDoc(doc(firestore, "Events", eventSnapshots.id), {
         eventImage: eventImageURL,
+        eventId: eventSnapshots.id,
       });
-      //   setEventState(prev => ({
-      //     ...prev ,
-
-      //   }))
+      //  router.push('/events')
+      push("/events");
+      setEventData(intialStateData);
     } catch (error: any) {
       console.log(error.message);
     }
     setLoading(false);
-    setEventData(intialStateData);
   }
 };
 

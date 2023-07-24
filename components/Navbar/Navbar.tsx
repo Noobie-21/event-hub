@@ -26,13 +26,7 @@ const Navbar = ({}: NavbarProps) => {
         <Image src="images/logo.png" height={"50px"} />
       </Link>
       {user ? (
-        // <Button
-        //   variant={"outline"}
-        //   className="mr-14 gap-2"
-        //   onClick={() => signOut(auth)}
-        // >
-        //   Logout
-        // </Button>
+        
         <Flex className="mr-14 gap-2">
           <MenuItems />
         </Flex>

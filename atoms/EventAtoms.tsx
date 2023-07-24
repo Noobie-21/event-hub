@@ -11,6 +11,7 @@ export type EventAtomState = {
   eventImage: string;
   category: string;
   creatorId: string;
+  cretedAt: Timestamp;
   bookMarks?: [];
   id?: string;
 };

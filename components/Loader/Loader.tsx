@@ -1,8 +1,13 @@
 import React from "react";
 import "./loading.css";
+import { Flex } from "@chakra-ui/react";
 
 const Loader = () => {
-  return <div className="square-circle-5 "></div>;
+  return (
+    <Flex className="justify-center items-center h-screen">
+      <div className="square-circle-5 "></div>
+    </Flex>
+  );
 };
 
 export default Loader;

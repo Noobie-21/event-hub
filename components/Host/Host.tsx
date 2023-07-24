@@ -22,6 +22,7 @@ import Catogary from "./Category/Category";
 import useUser from "@/hooks/useUser";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { eventHubState } from "@/atoms/EventAtoms";
+import { useRouter } from "next/navigation";
 
 type EventDataProps = {
   eventName: string;
@@ -69,7 +70,9 @@ const HostEvent = () => {
   });
   const selectedFileRef = useRef<HTMLInputElement>(null);
   const [errorState, setFormErrorState] = useState(false);
-
+  const router = useRouter();
+  const push = router.push;
+  // console.log(typeof push, ": Router Type");
   const changeInputHandler = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -100,6 +103,7 @@ const HostEvent = () => {
       userData,
       user,
       setEventState,
+      push,
     });
   };
   // console.log(date, "hello There");

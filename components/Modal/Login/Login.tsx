@@ -13,6 +13,7 @@ import {
 import React, { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useSetRecoilState } from "recoil";
+import { toast } from "react-toastify";
 
 type Props = {};
 
@@ -35,8 +36,13 @@ const Login = (props: Props) => {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await signInWithEmailAndPassword(data.email, data.password);
+
+    const success = await signInWithEmailAndPassword(data.email, data.password);
     // console.log(userError?.code, ": Error while login");
+    if (success) {
+      toast.success("Welcome Back");
+      return;
+    }
     if (
       userError?.code === "auth/wrong-password" ||
       userError?.code === "auth/too-many-requests"
@@ -47,13 +53,6 @@ const Login = (props: Props) => {
       setError(true);
       setFormError("Please check the credential");
     }
-
-    setAuthModalState((prev) => ({
-      ...prev,
-      open: false,
-    }));
-
-    // console.log("UserLogIn : ", userLogIn);
   };
   return (
     <Stack spacing="6">
