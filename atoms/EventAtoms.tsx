@@ -13,8 +13,25 @@ export type EventAtomState = {
   creatorId: string;
   cretedAt: Timestamp;
   bookMarks?: [];
-  id?: string;
   host: {};
+  eventId: string;
+};
+export type EventFilterData = {
+  eventName: string;
+  title: string;
+  desc: string;
+  location: string;
+  timeStamp: Timestamp;
+  eventImage: string;
+  category: string;
+  creatorId: string;
+  cretedAt: Timestamp;
+  eventId: string;
+  host: {
+    name: string;
+    password: string;
+    profilePicture: string;
+  };
 };
 
 export type UserData = {
@@ -27,6 +44,7 @@ export type UserData = {
 interface EventHubState {
   events: EventAtomState[];
   userData: UserData;
+  filterData: EventFilterData[];
 }
 
 export const defaultEventHubState: EventHubState = {
@@ -37,6 +55,7 @@ export const defaultEventHubState: EventHubState = {
     profilePicture: "",
     about: "",
   },
+  filterData: [],
 };
 
 export const eventHubState = atom<EventHubState>({

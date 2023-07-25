@@ -48,7 +48,7 @@ const EventDetails = (props: Props) => {
             location={eventDetails.location}
             timeStamp={eventDetails.timeStamp}
             title={eventDetails.title}
-            id={eventDetails.id}
+            loadingData={loadingData}
           />
         </Flex>
       )}

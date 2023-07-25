@@ -1,7 +1,10 @@
 "use client";
 import Catogary from "@/components/Host/Category/Category";
+import { auth } from "@/firebase/firebaseConfig";
+import useFilter from "@/hooks/useFilter";
 import { Flex, Text, FormLabel } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 type Props = {};
 const category: string[] = [
@@ -14,10 +17,22 @@ const category: string[] = [
   "public speaking",
   "debate",
 ];
-const EventHeader = (props: Props) => {
+const EventHeader = () => {
   const [selected, setSelected] = useState(category[0]);
+  const { onFilter, setEventState } = useFilter();
+  const [user, userLoading] = useAuthState(auth);
 
-  console.log(selected, "Hello There");
+  useEffect(() => {
+    if (user && !userLoading) {
+      onFilter(selected);
+    } else {
+      setEventState((prev) => ({
+        ...prev,
+        events: [],
+      }));
+    }
+  }, [selected, user, userLoading]);
+
   return (
     <Flex className="w-full h-full items-center ">
       <Flex className="w-64 h-28 p-4 flex-col">

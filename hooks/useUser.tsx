@@ -2,9 +2,8 @@
 import { eventHubState } from "@/atoms/EventAtoms";
 import { auth, firestore } from "@/firebase/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 export type userDataProps = {
   email: string;
   name: string;
