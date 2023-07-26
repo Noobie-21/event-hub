@@ -32,6 +32,7 @@ export type EventFilterData = {
     password: string;
     profilePicture: string;
   };
+  amount: number;
 };
 
 export type UserData = {
@@ -39,6 +40,8 @@ export type UserData = {
   email: string;
   profilePicture: string;
   about?: string;
+  bannerImage?: string;
+  userId?: string;
 };
 
 interface EventHubState {
@@ -54,6 +57,8 @@ export const defaultEventHubState: EventHubState = {
     email: "",
     profilePicture: "",
     about: "",
+    bannerImage: "",
+    userId: "",
   },
   filterData: [],
 };

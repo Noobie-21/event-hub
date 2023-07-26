@@ -26,7 +26,6 @@ const Navbar = ({}: NavbarProps) => {
         <Image src="images/logo.png" height={"50px"} />
       </Link>
       {user ? (
-        
         <Flex className="mr-14 gap-2">
           <MenuItems />
         </Flex>
@@ -35,12 +34,14 @@ const Navbar = ({}: NavbarProps) => {
           <AuthModal />
           <Button
             variant="outline"
+            className="text-slate-200 hover:bg-blue-400"
             onClick={() => setAuthModalState({ open: true, view: "login" })}
           >
             Login
           </Button>
           <Button
             variant={"outline"}
+            className="text-slate-200 hover:bg-blue-400"
             onClick={() => setAuthModalState({ open: true, view: "register" })}
           >
             Sign Up

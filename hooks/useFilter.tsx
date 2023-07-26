@@ -22,8 +22,9 @@ type Props = {};
 const useFilter = () => {
   const [eventState, setEventState] = useRecoilState(eventHubState);
   const [loading, setLoading] = useState<boolean>(false);
+  const [user] = useAuthState(auth);
 
-  const onFilter = async (category: string) => {
+  const onFilter = async (category?: string) => {
     setLoading(true);
     if (category === "Events") {
       const eventCollectionRef = collection(firestore, "Events");
@@ -46,6 +47,7 @@ const useFilter = () => {
         );
         const filterData = await getDocs(categoryFilterQuery);
         const filteredData = filterData.docs.map((doc) => doc.data());
+        console.log(filteredData, "Something weord though!");
         setEventState((prev) => ({
           ...prev,
           events: filteredData as EventAtomState[],

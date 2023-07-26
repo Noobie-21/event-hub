@@ -13,7 +13,7 @@ type Props = {};
 const Profile = () => {
   const [user, userLoading] = useAuthState(auth);
   const [loading, setLoading] = useState<boolean>(false);
-  const { getUser, eventState } = useUser();
+  const { getUser, eventState, setEventState, userLoadingState } = useUser();
   const router = useRouter();
   useEffect(() => {
     setLoading(true);
@@ -24,15 +24,29 @@ const Profile = () => {
   }, [user, userLoading]);
 
   useEffect(() => {
-    if (user && !userLoading) {
+    if (user && !userLoading && !userLoadingState) {
       getUser();
       return;
+    } else {
+      setEventState((prev) => ({
+        ...prev,
+        userData: {
+          email: "",
+          name: "",
+          profilePicture: "",
+          about: "",
+          bannerImage: "",
+          userId: "",
+        },
+      }));
     }
-  }, [user, userLoading]);
+  }, [user, userLoading, userLoadingState]);
+
+  // console.log(eventState.userData.bannerImage, "Hello I am  Banner 😂😂");
 
   return (
     <Flex className="h-full w-full">
-      {loading ? (
+      {loading && !userLoading ? (
         <Flex className="h-screen w-full justify-center items-center">
           <Loader />
         </Flex>
@@ -42,6 +56,7 @@ const Profile = () => {
           name={eventState.userData.name}
           profileImage={eventState.userData.profilePicture}
           about={eventState.userData.about!}
+          bannerImage={eventState.userData?.bannerImage!}
         />
       )}
     </Flex>

@@ -23,6 +23,7 @@ import useUser from "@/hooks/useUser";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { eventHubState } from "@/atoms/EventAtoms";
 import { useRouter } from "next/navigation";
+import { BsEnvelopeExclamation } from "react-icons/bs";
 
 type EventDataProps = {
   eventName: string;
@@ -31,6 +32,7 @@ type EventDataProps = {
   timeStamp: Timestamp;
   category: string;
   location: string;
+  amount: number;
 };
 
 const category: string[] = [
@@ -50,6 +52,7 @@ const HostEvent = () => {
     desc: "",
     timeStamp: "",
     location: "",
+    amount: 0,
   };
   const [eventData, setEventData] = useState(intialStateData);
   const [user, userLoading] = useAuthState(auth);
@@ -68,6 +71,7 @@ const HostEvent = () => {
     category: "",
     imageFile: "",
     location: "",
+    amount: "",
   });
   const selectedFileRef = useRef<HTMLInputElement>(null);
   const [errorState, setFormErrorState] = useState(false);
@@ -153,21 +157,41 @@ const HostEvent = () => {
                 </Text>
               )}
             </Flex>
-            <Flex className="flex-col">
-              <FormLabel htmlFor="location">Loaction</FormLabel>
-              <Input
-                placeholder="New York City"
-                onChange={changeInputHandler}
-                name="location"
-                type="text"
-                id="location"
-              />
+            <Flex className="gap-2">
+              <Flex className="flex-col">
+                <FormLabel htmlFor="location">Loaction</FormLabel>
+                <Input
+                  placeholder="New York City"
+                  onChange={changeInputHandler}
+                  name="location"
+                  type="text"
+                  id="location"
+                  // children={<BsEnvelopeExclamation />}
+                />
 
-              {errorState && (
-                <Text className="text-[0.750rem] mt-1.2 text-red-600 ml-0.5">
-                  {formError.location}
-                </Text>
-              )}
+                {errorState && (
+                  <Text className="text-[0.750rem] mt-1.2 text-red-600 ml-0.5">
+                    {formError.location}
+                  </Text>
+                )}
+              </Flex>
+              <Flex className="flex-col">
+                <FormLabel htmlFor="amount">Amount</FormLabel>
+                <Input
+                  placeholder="₹200"
+                  onChange={changeInputHandler}
+                  name="amount"
+                  type="number"
+                  id="amount"
+                  // children={<BsEnvelopeExclamation />}
+                />
+
+                {errorState && (
+                  <Text className="text-[0.750rem] mt-1.2 text-red-600 ml-0.5">
+                    {formError.amount}
+                  </Text>
+                )}
+              </Flex>
             </Flex>
             <Flex className="flex-col">
               <FormLabel
@@ -208,7 +232,7 @@ const HostEvent = () => {
                   )}
                 </Flex>
                 <Flex className="w-1/2 flex-col">
-                  <FormLabel htmlFor="category">Category</FormLabel>
+                  <FormLabel htmlFor="category mb-2">Category</FormLabel>
                   <Catogary
                     selected={selectedCategory}
                     setSelected={setSelectedCategory}

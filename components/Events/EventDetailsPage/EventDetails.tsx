@@ -22,6 +22,7 @@ type Props = {
     profilePicture: string;
   };
   loadingData: boolean;
+  amount: number;
 };
 
 const EventDetailsPage = ({
@@ -35,6 +36,7 @@ const EventDetailsPage = ({
   timeStamp,
   title,
   loadingData,
+  amount,
 }: Props) => {
   const [imageLoading, setImageLoading] = useState(true);
 
@@ -84,7 +86,10 @@ const EventDetailsPage = ({
         </Flex>
       )}
 
-      <Flex className="col-span-2 p-8">
+      <Flex className="col-span-2 p-8 flex-col gap-4 items-center">
+        <Button variant={"unstyled"} className="bg-violet-400 text-black w-1/2">
+          ₹{amount}
+        </Button>
         <Button variant={"outline"}>Enroll Now</Button>
       </Flex>
     </div>

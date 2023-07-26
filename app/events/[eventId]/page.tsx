@@ -49,6 +49,7 @@ const EventDetails = (props: Props) => {
             timeStamp={eventDetails.timeStamp}
             title={eventDetails.title}
             loadingData={loadingData}
+            amount={eventDetails.amount}
           />
         </Flex>
       )}

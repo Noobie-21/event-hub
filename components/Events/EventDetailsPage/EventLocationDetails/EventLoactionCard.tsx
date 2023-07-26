@@ -2,6 +2,7 @@ import { Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { BsCalendarDate } from "react-icons/bs";
+import moment from "moment";
 
 type Props = {
   location: string;
@@ -9,6 +10,8 @@ type Props = {
 };
 
 const EventLoactionCard = ({ location, timeStamp }: Props) => {
+  // const comp = new Date().getDate() === moment(new Date(timeStamp)).date();
+  // console.log(comp, "Date of Fucking bitch");
   return (
     <Flex
       className="flex-col  items-center p-1 h-52 justify-center  "

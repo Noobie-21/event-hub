@@ -44,7 +44,7 @@ const DashboardCard1 = ({
       variants={dropIn}
       initial="hidden"
       animate="visible"
-      className="w-full h-[60vh] bg-slate-200 hover:shadow-lg transition-all flex flex-col justify-start items-center p-4 rounded-md"
+      className="w-full h-[60vh] bg-slate-200 hover:shadow-lg transition-all flex flex-col justify-start items-center p-4 rounded-md z-50 relative"
     >
       <div className="rounded-full  w-30 overflow-hidden">
         <Image

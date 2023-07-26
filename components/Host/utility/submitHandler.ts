@@ -20,6 +20,7 @@ type eventDataProps = {
   desc: string;
   timeStamp: string;
   location: string;
+  amount: number;
 };
 type eventErrorProps = {
   eventName: string;
@@ -29,6 +30,7 @@ type eventErrorProps = {
   category: string;
   location: string;
   imageFile: string;
+  amount: string;
 };
 
 interface submitHandlerArgs {
@@ -59,7 +61,7 @@ const submitHandler = async ({
   push,
 }: //   setEventState,
 submitHandlerArgs) => {
-  const { eventName, title, desc, timeStamp, location } = eventData;
+  const { eventName, title, desc, timeStamp, location, amount } = eventData;
   const intitalFormErrorStates = {
     eventName: "",
     title: "",
@@ -68,6 +70,7 @@ submitHandlerArgs) => {
     category: "",
     location: "",
     imageFile: "",
+    amount: "",
   };
   const intialStateData = {
     eventName: "",
@@ -75,6 +78,7 @@ submitHandlerArgs) => {
     desc: "",
     timeStamp: "",
     location: "",
+    amount: 0,
   };
   if (eventName.trim().length < 4) {
     setFormErrorState(true);
@@ -93,6 +97,12 @@ submitHandlerArgs) => {
     setFormError({
       ...intitalFormErrorStates,
       location: "Location must be greater than 4 character",
+    });
+  } else if (!amount) {
+    setFormErrorState(true);
+    setFormError({
+      ...intitalFormErrorStates,
+      amount: "Amount Cannot be empty, if you want to free enter 0",
     });
   } else if (desc.trim().length < 50) {
     setFormErrorState(true);
@@ -139,6 +149,7 @@ submitHandlerArgs) => {
         },
         user: user?.uid,
         cretedAt: serverTimestamp(),
+        amount: +amount,
       });
 
       const storageRef = ref(storage, `event-images/${eventSnapshots.id}`);

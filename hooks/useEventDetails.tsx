@@ -24,6 +24,7 @@ const useEventDetails = () => {
     },
     id: "",
     location: "",
+    amount: 0,
   };
   const [eventDetails, setEventDetails] = useState(intialState);
   const [loadingData, setLoadingData] = useState(false);
@@ -44,6 +45,7 @@ const useEventDetails = () => {
         host: data.data()?.host,
         id: data.id,
         location: data.data()?.location,
+        amount: data.data()?.amount,
       });
     } catch (error: any) {
       console.log(error.message, "Error Occured");

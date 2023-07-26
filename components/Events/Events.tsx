@@ -12,7 +12,7 @@ const Events = () => {
   // console.log(eventState.events, "Hello tHere");
 
   return (
-    <Flex className="flex-col gap-4 w-full">
+    <Flex className="flex-col gap-4 w-full justify-center items-center">
       <EventHeader />
 
       {loading ? (

@@ -120,7 +120,7 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
       variants={dropIn}
       initial="hidden"
       animate="visible"
-      className="w-full h-full text-black  rounded-md  bg-slate-200 p-5 flex flex-col gap-3 font-srcs "
+      className="w-full relative z-50 h-full text-black  rounded-md  bg-slate-200 p-5 flex flex-col gap-3 font-srcs "
     >
       <div className="flex justify-between items-center">
         <Text className="text-xl text-[#000093]">My account</Text>
@@ -163,15 +163,16 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
         </div>
       </div>
 
-      <form onSubmit={onSubmit}>
-        <Text className="text-xl text-[#000093] mb-2 underline">
+      <form onSubmit={onSubmit} className=" ">
+        <Text className="text-xl text-[#000093] mb-0 md:mb-2 underline">
           Update Password
         </Text>
-        <div className="px-3 grid grid-cols-3 gap-3 mb-3">
+
+        <div className="px-3 grid grid-cols-3 gap-3 mb-3 ">
           <div className="col-span-1 flex flex-col text-xl ">
             <FormLabel
               htmlFor="old-password"
-              className="text-sm font-bold text-blue-300 relative"
+              className="text-[0.7rem] md:text-sm font-bold text-blue-300 relative"
             >
               Old Password <span className="text-red-400 text-sm ">*</span>
             </FormLabel>
@@ -192,7 +193,7 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
           <div className="col-span-1 flex flex-col text-xl">
             <FormLabel
               htmlFor="new-password"
-              className="text-sm font-bold text-blue-400"
+              className="text-sm font-bold text-blue-400 text-[0.68rem] md:text-sm"
             >
               New Password <span className="text-red-400 text-sm ">*</span>
             </FormLabel>
@@ -215,7 +216,7 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
           <div className="col-span-1 flex flex-col text-xl">
             <FormLabel
               htmlFor="confirm-password"
-              className="text-sm font-bold text-blue-400"
+              className="text-sm font-bold text-blue-400 text-[0.68rem] md:text-sm"
             >
               Confirm Password <span className="text-red-400 text-sm ">*</span>
             </FormLabel>
@@ -234,6 +235,7 @@ const DashboardCard2 = ({ name, email }: DashboardCard2Props) => {
             )}
           </div>
         </div>
+
         <Flex className="w-full justify-end ">
           <Button
             className="bg-violet-400 hover:bg-violet-300 "

@@ -17,6 +17,7 @@ const category: string[] = [
   "public speaking",
   "debate",
 ];
+const amount = ["Free", "Above 100", "Below 100"];
 const EventHeader = () => {
   const [selected, setSelected] = useState(category[0]);
   const { onFilter, setEventState } = useFilter();
@@ -32,6 +33,7 @@ const EventHeader = () => {
       }));
     }
   }, [selected, user, userLoading]);
+  // console.log(amountSelected, selected, "Hurray");
 
   return (
     <Flex className="w-full h-full items-center ">
