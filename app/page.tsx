@@ -6,6 +6,11 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Loader from "@/components/Loader/Loader";
 import { Flex } from "@chakra-ui/react";
+import { Metadata } from "next";
+
+const metadata: Metadata = {
+  title: "Event-Hub",
+};
 
 export default function Home() {
   const [user, userLoading] = useAuthState(auth);

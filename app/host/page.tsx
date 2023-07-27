@@ -30,7 +30,7 @@ const Host = (props: Props) => {
       } justify-center items-center p-8`}
     >
       {loading ? (
-        <Flex className="">
+        <Flex className="h-screen w-full ">
           <Loader />
         </Flex>
       ) : (

@@ -27,10 +27,12 @@ const EventDetails = (props: Props) => {
     setLoading(false);
   }, [user, userLoading]);
   useEffect(() => {
+    setLoading(true);
     if (user && !userLoading) {
       getEventDetails(params.eventId as any);
       return;
     }
+    setLoading(false);
   }, [user, userLoading]);
   return (
     <>
@@ -48,7 +50,7 @@ const EventDetails = (props: Props) => {
             location={eventDetails.location}
             timeStamp={eventDetails.timeStamp}
             title={eventDetails.title}
-            loadingData={loadingData}
+            loadingData={loading}
             amount={eventDetails.amount}
           />
         </Flex>

@@ -1,7 +1,7 @@
 "use client";
 import Loader from "@/components/Loader/Loader";
-import React from "react";
 import { Flex } from "@chakra-ui/react";
+import React from "react";
 
 const Loading = () => {
   return (

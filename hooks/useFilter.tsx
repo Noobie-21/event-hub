@@ -3,11 +3,15 @@ import {
   EventAtomState,
   EventFilterData,
   eventHubState,
+  recommendationFilterDataProps,
 } from "@/atoms/EventAtoms";
 import { auth, firestore } from "@/firebase/firebaseConfig";
 import {
+  QueryLimitConstraint,
+  WhereFilterOp,
   collection,
   getDocs,
+  limit,
   onSnapshot,
   orderBy,
   query,
@@ -23,21 +27,29 @@ const useFilter = () => {
   const [eventState, setEventState] = useRecoilState(eventHubState);
   const [loading, setLoading] = useState<boolean>(false);
   const [user] = useAuthState(auth);
+  // console.log(eventState.Category);
 
-  const onFilter = async (category?: string) => {
+  const onFilter = async (
+    category?: string,
+    limitValue?: QueryLimitConstraint
+  ) => {
     setLoading(true);
     if (category === "Events") {
       const eventCollectionRef = collection(firestore, "Events");
-      onSnapshot(eventCollectionRef, (data) => {
-        const snapShot = data.docs.map((doc) => {
-          return { ...doc.data() };
-        });
 
-        setEventState((prev) => ({
-          ...prev,
-          events: snapShot as EventAtomState[],
-        }));
-      });
+      const eventQuery = query(
+        eventCollectionRef,
+        where("cretedAt", "!=", ""),
+        orderBy("cretedAt", "desc")
+      );
+      const data = await getDocs(eventQuery);
+
+      const snapshotData = data.docs.map((doc) => doc.data());
+      setEventState((prev) => ({
+        ...prev,
+        events: snapshotData as EventAtomState[],
+        // Category: "dance",
+      }));
     } else {
       try {
         const categoryFilterQuery = query(
@@ -47,7 +59,6 @@ const useFilter = () => {
         );
         const filterData = await getDocs(categoryFilterQuery);
         const filteredData = filterData.docs.map((doc) => doc.data());
-        console.log(filteredData, "Something weord though!");
         setEventState((prev) => ({
           ...prev,
           events: filteredData as EventAtomState[],
@@ -58,7 +69,59 @@ const useFilter = () => {
     }
     setLoading(false);
   };
-  return { eventState, setEventState, onFilter, loading };
+
+  const onFilterQuery = async (
+    orderValue?: string,
+    limitValue?: number,
+    equalValue?: WhereFilterOp,
+    optStr?: string
+  ) => {
+    console.log(orderValue, limitValue, equalValue, optStr);
+    setLoading(true);
+    try {
+      const queryDocRef = collection(firestore, "Events");
+      const dataQuery = query(
+        queryDocRef,
+        where("cretedAt", "!=", ""),
+        orderBy("cretedAt", "desc"),
+        limit(6)
+      );
+      const data = await getDocs(dataQuery);
+      const queryData = data.docs.map((doc) => doc.data());
+
+      setEventState((prev) => ({
+        ...prev,
+        filterData: queryData as EventFilterData[],
+      }));
+    } catch (error: any) {
+      console.log(error.message, "Error happen while Filtering");
+    }
+    setLoading(false);
+  };
+
+  const currentUsersEvents = async () => {
+    setLoading(true);
+    try {
+      const queryDocRef = collection(firestore, "Events");
+      const dataQuery = query(
+        queryDocRef,
+        where("user", "==", user?.uid),
+        orderBy("cretedAt", "desc")
+      );
+      const data = await getDocs(dataQuery);
+      const queryData = data.docs.map((doc) => doc.data());
+
+      setEventState((prev) => ({
+        ...prev,
+        currentUserEvent: queryData as EventFilterData[],
+      }));
+    } catch (error: any) {
+      console.log(error.message, "Error happen while Filtering");
+    }
+    setLoading(false);
+  };
+
+  return { eventState, setEventState, onFilter, loading, onFilterQuery };
 };
 
 export default useFilter;

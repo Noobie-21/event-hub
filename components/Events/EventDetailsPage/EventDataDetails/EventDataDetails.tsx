@@ -22,11 +22,8 @@ const EventDataDetails = ({
   category,
 }: Props) => {
   return (
-    <Flex
-      className="p-2 w-full flex-col text-black h-full shadow-lg"
-      borderRadius={10}
-    >
-      <Flex className="flex-col w-full  gap-2 border-b">
+    <Flex className="p-2 w-full flex-col  h-full shadow-lg" borderRadius={10}>
+      <Flex className="flex-col w-full  gap-2 ">
         <Flex className="gap-1 mt-1 justify-start items-center text-sm border-b ">
           <Text className="ml-2 ">hosted by- {name} </Text>
           <BsDot className=" text-2xl text-violet-400" />
@@ -34,8 +31,8 @@ const EventDataDetails = ({
             Posted: {moment(new Date(createdAt?.seconds * 1000)).fromNow()}{" "}
           </Text>
         </Flex>
-        <Flex className="p-1 flex-col">
-          <Text className="text-[1.5rem] text-red-500">{title}</Text>
+        <Flex className="p-1 flex-col gap-4">
+          <Text className="text-[1.5rem] text-fuchsia-500">{title}</Text>
           <Flex className="gap-2">
             <Text className="text-gray-400">{eventName}</Text>
             <Flex className=" inline-block bg-gray-300 rounded-lg px-3 py-1 text-sm font-semibold text-gray-500  mr-2 mb-2">

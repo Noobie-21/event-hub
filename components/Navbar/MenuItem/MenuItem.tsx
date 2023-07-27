@@ -31,7 +31,7 @@ const MenuItems = () => {
             <MenuItem icon={<BsPencilSquare size={20} />}>Host Event</MenuItem>
           </Link>
 
-          <Link href="/events" className="font-bold uppercase ">
+          <Link href="/events?category=Events" className="font-bold uppercase ">
             <MenuItem icon={<BsFillGrid1X2Fill size={20} />}>
               All Events
             </MenuItem>

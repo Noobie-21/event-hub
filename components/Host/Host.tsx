@@ -35,7 +35,7 @@ type EventDataProps = {
   amount: number;
 };
 
-const category: string[] = [
+export const category: string[] = [
   "dance",
   "music",
   "cultural",

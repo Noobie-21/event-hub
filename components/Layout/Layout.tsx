@@ -10,7 +10,7 @@ export default function Layout({ children }: any) {
     <div>
       {/* <ColorModeSwitcher /> */}
       <Navbar />
-      <ToastContainer position="bottom-right" />
+
       <main>{children}</main>
       <Footer />
     </div>

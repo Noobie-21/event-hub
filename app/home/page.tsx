@@ -1,10 +1,12 @@
 "use client";
 import Loader from "@/components/Loader/Loader";
 import { auth } from "@/firebase/firebaseConfig";
-import { Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+
+import HomePageSection from "@/components/Home/Home";
 
 const HomePage = () => {
   const [user, userLoading] = useAuthState(auth);
@@ -14,14 +16,21 @@ const HomePage = () => {
     setLoading(true);
     if (!user) {
       router.push("/");
-      return;
     }
     setLoading(false);
   }, [user, userLoading]);
   return (
-    <div className="text-[10rem] h-screen flex justify-center items-center">
-      {loading ? <Loader /> : <Text> Hello There</Text>}
-    </div>
+    <Flex className="">
+      {loading ? (
+        <Flex className="h-screen w-full ">
+          <Loader />
+        </Flex>
+      ) : (
+        <>
+          <HomePageSection />
+        </>
+      )}
+    </Flex>
   );
 };
 

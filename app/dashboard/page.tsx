@@ -8,8 +8,6 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-type Props = {};
-
 const Profile = () => {
   const [user, userLoading] = useAuthState(auth);
   const [loading, setLoading] = useState<boolean>(false);
@@ -26,7 +24,6 @@ const Profile = () => {
   useEffect(() => {
     if (user && !userLoading && !userLoadingState) {
       getUser();
-      return;
     } else {
       setEventState((prev) => ({
         ...prev,
@@ -47,7 +44,7 @@ const Profile = () => {
   return (
     <Flex className="h-full w-full">
       {loading && !userLoading ? (
-        <Flex className="h-screen w-full justify-center items-center">
+        <Flex className="h-screen w-full ">
           <Loader />
         </Flex>
       ) : (
@@ -57,6 +54,7 @@ const Profile = () => {
           profileImage={eventState.userData.profilePicture}
           about={eventState.userData.about!}
           bannerImage={eventState.userData?.bannerImage!}
+          loading={loading}
         />
       )}
     </Flex>

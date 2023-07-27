@@ -35,7 +35,7 @@ const DashboardBanner = ({
   const setEventState = useSetRecoilState(eventHubState);
   const { eventState, userLoadingState } = useUser();
   const { userId } = eventState.userData;
-  console.log(bannerImage, "hurray!!");
+  // console.log(eventState.userData.bannerImage, "hurray!!");
 
   const onEditImage = async () => {
     try {
@@ -63,60 +63,70 @@ const DashboardBanner = ({
       console.log(error.message, "SOmething wrong I guesss!!");
     }
   };
+  // const [imageLoading , setImageLoading] = useState(true)
+  console.log(userLoadingState, "Loading State");
   return (
-    <Flex className="w-full relative  ">
-      {userLoadingState && <Skeleton className="w-full h-[90vh]" />}
-      <Flex
-        className=" w-full h-[90vh] flex flex-col justify-center items-start px-12 bg-center"
-        bgImage={bannerImage ? bannerImage : "images/anime.jpg"}
-        bgSize={"cover"}
-        bgGradient={
-          bannerImage
-            ? `linear-gradient(to bottom , rgba(0,0,0,0) , rgba(0,0,0,0.75)) , url(${bannerImage})`
-            : "linear-gradient(to bottom , rgba(0,0,0,0) , rgba(0,0,0,0.75)) , url('images/anime.jpg')"
-        }
-      >
-        <Text className="font-srcs text-6xl text-slate-400 pb-2 mb-4 border-b border-slate-400">
-          {name}
-        </Text>
-        <Text className=" text-xl text-[grey]  ">{email}</Text>
-        {about && (
-          <Text className="mt-2 text-slate-200 w-[30rem] font-[cursive]">
-            {about}
-          </Text>
-        )}
-      </Flex>
-      {userId === user?.uid && (
-        <Flex className="absolute right-5 bottom-20 z-50  items-center cursor-pointer">
-          {selectedFile ? (
-            <Button
-              variant={"link"}
-              className="font-bold mr-2 hover:underline text-slate-200 "
-              isLoading={imageLoading}
-              onClick={onEditImage}
-            >
-              Update Banner Image
-            </Button>
+    <>
+      {imageLoading ? (
+        <Skeleton className="w-full h-[90vh]" />
+      ) : (
+        <Flex className="w-full relative  ">
+          {imageLoading || userLoadingState ? (
+            <Skeleton className="w-full h-[90vh]" />
           ) : (
-            <Flex>
-              <input
-                type="file"
-                hidden
-                ref={bannerImageRef}
-                accept="image/jpg , image/jpeg"
-                onChange={onSelectedFile}
-              />
-              <Flex onClick={() => bannerImageRef.current?.click()}>
-                <FcEditImage size={32} />
-                <Text className="font-bold mr-2 hover:underline text-slate-200 ">
-                  Edit Banner Image
+            <Flex
+              className=" w-full h-[90vh] flex flex-col justify-center items-start px-12 bg-center"
+              bgImage={bannerImage}
+              bgSize={"cover"}
+              bgGradient={`linear-gradient(to bottom , rgba(0,0,0,0) , rgba(0,0,0,0.75)) , url(${bannerImage})`}
+              // onLoad={() => }
+              display={imageLoading ? "none" : "flex"}
+            >
+              <Text className="font-srcs text-6xl text-slate-400 pb-2 mb-4 border-b border-slate-400">
+                {name}
+              </Text>
+              <Text className=" text-xl text-[grey]  ">{email}</Text>
+              {about && (
+                <Text className="mt-2 text-slate-200 w-[30rem] font-[cursive]">
+                  {about}
                 </Text>
-              </Flex>
+              )}
+            </Flex>
+          )}
+
+          {userId === user?.uid && (
+            <Flex className="absolute right-5 bottom-20 z-50  items-center cursor-pointer">
+              {selectedFile ? (
+                <Button
+                  variant={"link"}
+                  className="font-bold mr-2 hover:underline text-slate-200 "
+                  isLoading={imageLoading}
+                  onClick={onEditImage}
+                >
+                  Update Banner Image
+                </Button>
+              ) : (
+                <Flex>
+                  <input
+                    type="file"
+                    hidden
+                    ref={bannerImageRef}
+                    accept="image/jpg , image/jpeg"
+                    onChange={onSelectedFile}
+                  />
+                  <Flex onClick={() => bannerImageRef.current?.click()}>
+                    <FcEditImage size={32} />
+                    <Text className="font-bold mr-2 hover:underline text-slate-200 ">
+                      Edit Banner Image
+                    </Text>
+                  </Flex>
+                </Flex>
+              )}
             </Flex>
           )}
         </Flex>
       )}
-    </Flex>
+    </>
   );
 };
 

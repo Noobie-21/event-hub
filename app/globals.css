@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital@1&family=Creepster&family=Lato&family=Montserrat&family=REM&family=Roboto&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +7,10 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --font-anton: "Anton", sans-serif;
+  --roboto: "Roboto", sans-serif;
+  --mont: "Montserrat", sans-serif;
+  --rems: "REM", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +23,18 @@
 
 .overflow-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+.anton {
+  font-family: var(--font-anton);
+}
+
+.roboto {
+  font-family: var(--roboto);
+}
+.mont {
+  font-family: var(--mont);
+}
+.rems {
+  font-family: var(--rems);
 }

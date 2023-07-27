@@ -21,7 +21,7 @@ export type EventFilterData = {
   title: string;
   desc: string;
   location: string;
-  timeStamp: Timestamp;
+  timeStamp: string;
   eventImage: string;
   category: string;
   creatorId: string;
@@ -44,10 +44,29 @@ export type UserData = {
   userId?: string;
 };
 
+export type recommendationFilterDataProps = {
+  eventName: string;
+  amount: number;
+  timeStamp: string;
+  eventId: string;
+};
+
+export const category = [
+  "Events",
+  "dance",
+  "music",
+  "cultural",
+  "tech",
+  "academic",
+  "public speaking",
+  "debate",
+];
 interface EventHubState {
   events: EventAtomState[];
   userData: UserData;
   filterData: EventFilterData[];
+  Category: string;
+  currentUserEvent: EventFilterData[];
 }
 
 export const defaultEventHubState: EventHubState = {
@@ -61,6 +80,8 @@ export const defaultEventHubState: EventHubState = {
     userId: "",
   },
   filterData: [],
+  Category: "",
+  currentUserEvent: [],
 };
 
 export const eventHubState = atom<EventHubState>({
