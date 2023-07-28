@@ -17,8 +17,6 @@ type CategoryProps = {
   selected: any;
   setSelected: Dispatch<SetStateAction<any>>;
   category: string[];
-  categoryState: string;
-  setCategoryState: Dispatch<SetStateAction<any>>;
 };
 
 export default function Catogary({

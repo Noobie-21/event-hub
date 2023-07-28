@@ -99,13 +99,13 @@ const useFilter = () => {
     setLoading(false);
   };
 
-  const currentUsersEvents = async () => {
+  const usersEvents = async (user?: string) => {
     setLoading(true);
     try {
       const queryDocRef = collection(firestore, "Events");
       const dataQuery = query(
         queryDocRef,
-        where("user", "==", user?.uid),
+        where("user", "==", user),
         orderBy("cretedAt", "desc")
       );
       const data = await getDocs(dataQuery);
@@ -121,7 +121,14 @@ const useFilter = () => {
     setLoading(false);
   };
 
-  return { eventState, setEventState, onFilter, loading, onFilterQuery };
+  return {
+    eventState,
+    setEventState,
+    onFilter,
+    loading,
+    onFilterQuery,
+    usersEvents,
+  };
 };
 
 export default useFilter;

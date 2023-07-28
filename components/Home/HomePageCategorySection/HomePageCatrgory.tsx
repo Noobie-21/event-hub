@@ -46,7 +46,7 @@ const HomePageCategory = (props: Props) => {
     onFilter(item);
   };
   return (
-    <Flex className="h-screen w-full flex-col  items-center p-6 ">
+    <Flex className=" h-fit w-full flex-col  items-center p-6 ">
       <Flex className=" p-4  flex-col  ">
         <Text className="text-[2rem] text-violet-600 mb-4 underline">
           Recommendation meetups for you

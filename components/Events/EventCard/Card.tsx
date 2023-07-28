@@ -9,7 +9,7 @@ type Props = {
   category: string;
   eventImage: string;
   title: string;
-  timeStamp?: Date;
+  timeStamp?: string;
   createdAt: Timestamp;
   id: string | undefined;
 };

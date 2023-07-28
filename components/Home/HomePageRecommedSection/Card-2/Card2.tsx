@@ -14,7 +14,10 @@ const Card2 = ({ event }: Props) => {
   return (
     <Flex className="flex-col mt-4">
       <Text className="text-[2rem] mb-3">Cultural Events</Text>
-      <Flex className="h-full w-full gap-2   ">
+      <Flex
+        className="h-full w-full gap-2  md:flex-row flex-col  "
+        align={{ base: "center", md: "unset" }}
+      >
         {event &&
           event.map((event) => {
             return (

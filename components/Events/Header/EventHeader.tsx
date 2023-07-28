@@ -34,15 +34,19 @@ const EventHeader = () => {
   }, [selected, user, userLoading, searchValue]);
 
   return (
-    <Flex className="w-full h-full items-center ">
-      <Flex className="w-64 h-28 p-4 flex-col">
+    <Flex
+      className="w-full h-full items-center "
+      justify={{ base: "center", md: "unset" }}
+    >
+      <Flex
+        className="w-64 h-28 p-4 flex-col"
+        align={{ base: "center", md: "unset" }}
+      >
         <FormLabel>Filter</FormLabel>
         <Catogary
           selected={searchValue}
           setSelected={setSelected}
           category={category}
-          categoryState={categoryState.Category}
-          setCategoryState={setCategoryState}
         />
       </Flex>
     </Flex>

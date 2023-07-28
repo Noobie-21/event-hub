@@ -15,7 +15,10 @@ const Card1 = ({ techEvent }: Props) => {
   return (
     <Flex className="flex-col mb-3">
       <Text className="text-[2rem] mb-3">Events for "techy" people</Text>
-      <Flex className="h-full w-full gap-2   ">
+      <Flex
+        className="h-full w-full gap-2 md:flex-row flex-col "
+        align={{ base: "center", md: "unset" }}
+      >
         {techEvent &&
           techEvent.map((event) => {
             return (

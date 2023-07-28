@@ -120,7 +120,10 @@ const HostEvent = () => {
     <div className=" p-4 rounded-lg shadow-lg  font-semibold h-fit text-sm">
       <form onSubmit={handleSubmit}>
         <FormControl className="relative">
-          <Flex className=" w-[30rem]  flex-col gap-6 mb-6 ">
+          <Flex
+            className=" w-[30rem]  flex-col gap-6 mb-6 "
+            p={{ base: 6, md: 0 }}
+          >
             <Text className="text-center text-3xl font-bold uppercase text-violet-300">
               Host an Event
             </Text>

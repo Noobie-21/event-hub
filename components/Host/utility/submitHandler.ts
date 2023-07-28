@@ -161,7 +161,7 @@ submitHandlerArgs) => {
         eventId: eventSnapshots.id,
       });
       //  router.push('/events')
-      push("/events");
+      push("/events?category=Events");
       setEventData(intialStateData);
     } catch (error: any) {
       console.log(error.message);
