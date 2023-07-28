@@ -11,11 +11,11 @@ const BannerSection = () => {
     <>
       <Flex
         className="h-[80vh] justify-center items-center  w-full gap-5 "
-        bgImage={"images/image-2.jpg"}
+        bgImage={"/images/image-2.jpg"}
         bgSize={"cover"}
         bgPosition={"bottom"}
         bgGradient={
-          "linear-gradient(to bottom , rgba(0,0,0,0) , rgba(0,0,0,0.75)) , url('images/image-2.jpg')"
+          "linear-gradient(to bottom , rgba(0,0,0,0) , rgba(0,0,0,0.75)) , url('/images/image-2.jpg')"
         }
       >
         <motion.div
