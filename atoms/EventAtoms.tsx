@@ -31,8 +31,10 @@ export type EventFilterData = {
     name: string;
     password: string;
     profilePicture: string;
+    bannerImage?: string;
   };
   amount: number;
+  user: string;
 };
 
 export type UserData = {

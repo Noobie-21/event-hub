@@ -1,4 +1,5 @@
 "use client";
+import { eventHubState } from "@/atoms/EventAtoms";
 import EventDetailsPage from "@/components/Events/EventDetailsPage/EventDetails";
 import Loader from "@/components/Loader/Loader";
 import { auth, firestore } from "@/firebase/firebaseConfig";
@@ -8,6 +9,7 @@ import { Timestamp, doc } from "firebase/firestore";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useRecoilValue } from "recoil";
 
 type Props = {};
 
@@ -17,6 +19,8 @@ const EventDetails = (props: Props) => {
   const [loading, setLoading] = useState(false);
   const [user, userLoading] = useAuthState(auth);
   const { getEventDetails, eventDetails, loadingData } = useEventDetails();
+  // const eventState = useRecoilValue(eventHubState);
+  // console.log(eventDetails.userId);
 
   useEffect(() => {
     setLoading(true);
@@ -52,6 +56,7 @@ const EventDetails = (props: Props) => {
             title={eventDetails.title}
             loadingData={loading}
             amount={eventDetails.amount}
+            userId={eventDetails.userId}
           />
         </Flex>
       )}

@@ -17,7 +17,7 @@ type Props = {
 const Card = ({ category, createdAt, desc, eventImage, title, id }: Props) => {
   const [loading, setLoading] = useState<boolean>(true);
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg border border-gray-300">
+    <div className="max-w-sm rounded overflow-hidden shadow-lg border border-gray-300 h-fit">
       <Flex>
         {loading && (
           <Skeleton height={"230px"} width={"100%"} borderRadius={4} />

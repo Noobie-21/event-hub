@@ -11,6 +11,7 @@ type Props = {
   createdAt: any;
   eventName: string;
   category: string;
+  userId: string;
 };
 
 const EventDataDetails = ({
@@ -20,6 +21,7 @@ const EventDataDetails = ({
   name,
   title,
   category,
+  userId,
 }: Props) => {
   return (
     <Flex className="p-2 w-full flex-col  h-full shadow-lg" borderRadius={10}>

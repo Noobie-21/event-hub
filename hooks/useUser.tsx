@@ -19,9 +19,9 @@ const useUser = () => {
   const [eventState, setEventState] = useRecoilState(eventHubState);
   const [userLoadingState, setUserLoadingState] = useState(false);
 
-  const getUser = async () => {
+  const getUser = async (userId?: string) => {
     setUserLoadingState(true);
-    const userDocRef = doc(firestore, "Users", user?.uid!);
+    const userDocRef = doc(firestore, "Users", userId ? userId : user?.uid!);
     const userCred = await getDoc(userDocRef);
     if (userCred.exists()) {
       setEventState((prev) => ({

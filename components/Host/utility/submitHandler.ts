@@ -146,6 +146,7 @@ submitHandlerArgs) => {
           email: userData?.email,
           name: userData?.name,
           profilePicture: userData?.profilePicture,
+          bannerImage: userData?.bannerImage,
         },
         user: user?.uid,
         cretedAt: serverTimestamp(),

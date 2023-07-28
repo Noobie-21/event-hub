@@ -5,13 +5,8 @@ import useSelectFile from "@/hooks/useSelectFile";
 import useUser from "@/hooks/useUser";
 import { Button, Flex, Skeleton, Text } from "@chakra-ui/react";
 import { doc, updateDoc } from "firebase/firestore";
-import {
-  getDownloadURL,
-  ref,
-  uploadBytes,
-  uploadString,
-} from "firebase/storage";
-import React, { useRef, useState } from "react";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { FcEditImage } from "react-icons/fc";
 import { useSetRecoilState } from "recoil";
@@ -20,7 +15,7 @@ type DashBoardBannerProps = {
   name: string;
   email: string;
   about?: string;
-  bannerImage: string;
+  bannerImage?: string;
 };
 const DashboardBanner = ({
   email,
@@ -35,8 +30,6 @@ const DashboardBanner = ({
   const setEventState = useSetRecoilState(eventHubState);
   const { eventState, userLoadingState } = useUser();
   const { userId } = eventState.userData;
-  // console.log(eventState.userData.bannerImage, "hurray!!");
-
   const onEditImage = async () => {
     try {
       setImageLoading(true);
@@ -64,7 +57,7 @@ const DashboardBanner = ({
     }
   };
   // const [imageLoading , setImageLoading] = useState(true)
-  console.log(userLoadingState, "Loading State");
+  // console.log(userLoadingState, "Loading State");
   return (
     <>
       {imageLoading ? (

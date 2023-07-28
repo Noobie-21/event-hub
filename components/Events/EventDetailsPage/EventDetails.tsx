@@ -23,6 +23,7 @@ type Props = {
   };
   loadingData: boolean;
   amount: number;
+  userId: string;
 };
 
 const EventDetailsPage = ({
@@ -37,6 +38,7 @@ const EventDetailsPage = ({
   title,
   loadingData,
   amount,
+  userId,
 }: Props) => {
   const [imageLoading, setImageLoading] = useState(true);
   // console.log(loadingData);
@@ -64,7 +66,7 @@ const EventDetailsPage = ({
             </Flex>
             <Flex className=" w-full h-full grid md:grid-cols-3  ">
               <Flex className="md:col-span-1 row-span-1 w-full h-fit justify-center p-4 bg-slate md:flex-col gap-4 ">
-                <UserData host={host} />
+                <UserData host={host} userId={userId} />
                 {/* hello there */}
                 <EventLoactionCard location={location} timeStamp={timeStamp} />
               </Flex>
@@ -76,6 +78,7 @@ const EventDetailsPage = ({
                   name={host?.name}
                   title={title}
                   category={category}
+                  userId={userId}
                 />
               </Box>
             </Flex>

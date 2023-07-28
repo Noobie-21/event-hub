@@ -3,7 +3,6 @@ import {
   EventAtomState,
   EventFilterData,
   eventHubState,
-  recommendationFilterDataProps,
 } from "@/atoms/EventAtoms";
 import { auth, firestore } from "@/firebase/firebaseConfig";
 import {
@@ -12,12 +11,12 @@ import {
   collection,
   getDocs,
   limit,
-  onSnapshot,
   orderBy,
   query,
   where,
 } from "firebase/firestore";
-import React, { useState } from "react";
+import moment from "moment";
+import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRecoilState } from "recoil";
 
@@ -28,6 +27,13 @@ const useFilter = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [user] = useAuthState(auth);
   // console.log(eventState.Category);
+  const todayDate = moment(new Date()).toDate();
+  const upcomingEvents = eventState.currentUserEvent.filter(
+    (event) => moment(new Date(event.timeStamp)).toDate() > todayDate
+  );
+  const pastEvents = eventState.currentUserEvent.filter(
+    (event) => moment(new Date(event.timeStamp)).toDate() < todayDate
+  );
 
   const onFilter = async (
     category?: string,
@@ -128,6 +134,8 @@ const useFilter = () => {
     loading,
     onFilterQuery,
     usersEvents,
+    upcomingEvents,
+    pastEvents,
   };
 };
 

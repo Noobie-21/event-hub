@@ -1,8 +1,7 @@
 import { auth } from "@/firebase/firebaseConfig";
 import useFilter from "@/hooks/useFilter";
 import { Flex } from "@chakra-ui/react";
-import moment from "moment";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Card from "../Events/EventCard/Card";
 import UserEvent from "../Layout/UserEvent";
@@ -27,26 +26,29 @@ const Dashboard = ({
   bannerImage,
   loading,
 }: DashboardProps) => {
-  const { eventState, usersEvents } = useFilter();
+  const { eventState, usersEvents, pastEvents, upcomingEvents } = useFilter();
   const [user, userLoading] = useAuthState(auth);
+  const [loadingState, setLoadingState] = useState(false);
 
-  const todayDate = moment(new Date()).toDate();
-
-  const upcomingEvents = eventState.currentUserEvent.filter(
-    (event) => moment(new Date(event.timeStamp)).toDate() > todayDate
-  );
-  const pastEvents = eventState.currentUserEvent.filter(
-    (event) => moment(new Date(event.timeStamp)).toDate() < todayDate
-  );
+  // console.log(pastEvents, "hello cutie");
+  // const todayDate = moment(new Date()).toDate();
+  // const upcomingEvents = eventState.currentUserEvent.filter(
+  //   (event) => moment(new Date(event.timeStamp)).toDate() > todayDate
+  // );
+  // const pastEvents = eventState.currentUserEvent.filter(
+  //   (event) => moment(new Date(event.timeStamp)).toDate() < todayDate
+  // );
 
   useEffect(() => {
+    setLoadingState(true);
     if (user && !userLoading) {
       usersEvents(user?.uid);
     }
+    setLoadingState(false);
   }, [user, userLoading]);
   return (
     <Flex className=" w-full flex-col h-full">
-      {loading ? (
+      {!loadingState && loading ? (
         <Loader />
       ) : (
         <>
@@ -98,7 +100,7 @@ const Dashboard = ({
               <>
                 {pastEvents.length < 1 ? (
                   <Flex className="text-[3rem] text-center justify-center items-center w-full h-full">
-                    No Upcoming Events
+                    No Past Events
                   </Flex>
                 ) : (
                   pastEvents.map((item) => {

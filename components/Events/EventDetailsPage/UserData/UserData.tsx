@@ -1,4 +1,5 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
+import Link from "next/link";
 import React from "react";
 import { Button } from "react-rainbow-components";
 
@@ -8,9 +9,10 @@ type Props = {
     email: string;
     profilePicture: string;
   };
+  userId: string;
 };
 
-const UserData = ({ host }: Props) => {
+const UserData = ({ host, userId }: Props) => {
   return (
     <Flex
       className="flex-col  items-center p-1 h-64 justify-center shadow-lg  "
@@ -31,9 +33,12 @@ const UserData = ({ host }: Props) => {
         <Text className="text-gray-500 p-2 text-sm">{host.email}</Text>
       </Flex>
       <Flex className=" mt-1 inline-block bg-violet-300 rounded-lg px-3 py-1 text-sm font-semibold text-gray-500  mr-2 mb-2" />
-      <Flex className="mt-4 inline-block bg-violet-300 rounded-lg px-3 py-1 text-sm font-semibold text-gray-500  mr-2 mb-2">
+      <Link
+        href={`/profile/${userId}`}
+        className="cursor-pointer mt-4 inline-block bg-violet-300 rounded-lg px-3 py-1 text-sm font-semibold text-gray-500  mr-2 mb-2"
+      >
         Profile
-      </Flex>
+      </Link>
     </Flex>
   );
 };
