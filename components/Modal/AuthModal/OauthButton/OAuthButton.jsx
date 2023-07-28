@@ -2,9 +2,8 @@ import { authModalState } from "@/atoms/AuthModalAtom";
 import { auth, firestore } from "@/firebase/firebaseConfig";
 import useUser from "@/hooks/useUser";
 import { Button, Image } from "@chakra-ui/react";
-import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore";
-import React, { useEffect } from "react";
-import { useAuthState, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useSetRecoilState } from "recoil";
 
 const OAuthButton = () => {
@@ -53,7 +52,7 @@ const OAuthButton = () => {
                 onClick={handleSubmit}
             >
                 <Image
-                    src={"images/googlelogo.png"}
+                    src={"pngimage/googlelogo.png"}
                     height={"20px"}
                     className="mr-2"
                 />

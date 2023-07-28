@@ -21,7 +21,7 @@ const Navbar = ({}: NavbarProps) => {
       className="bg-violet-300 items-center p-2 justify-between relative"
     >
       <Link href={`${user?.uid ? "/home" : "/"}`}>
-        <Image src="images/logo.png" height={"50px"} />
+        <Image src="pngimage/logo.png" height={"50px"} />
       </Link>
       {user ? (
         <Flex className="mr-14 gap-2">
