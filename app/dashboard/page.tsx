@@ -3,9 +3,9 @@ import Dashboard from "@/components/Dashboard/Dashboard";
 import Loader from "@/components/Loader/Loader";
 import { auth } from "@/firebase/firebaseConfig";
 import useUser from "@/hooks/useUser";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Profile = () => {

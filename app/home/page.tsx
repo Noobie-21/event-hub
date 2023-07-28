@@ -1,9 +1,9 @@
 "use client";
 import Loader from "@/components/Loader/Loader";
 import { auth } from "@/firebase/firebaseConfig";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import HomePageSection from "@/components/Home/Home";

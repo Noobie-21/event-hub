@@ -1,29 +1,26 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import "@/components/Host/DatePicker/Date.css";
 import { auth } from "@/firebase/firebaseConfig";
 import { Timestamp } from "firebase/firestore";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "@/components/Host/DatePicker/Date.css";
 
+import { eventHubState } from "@/atoms/EventAtoms";
+import useUser from "@/hooks/useUser";
 import {
   Box,
   Button,
   Flex,
   FormControl,
   FormLabel,
-  Grid,
   Input,
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import useSelectFile from "@/hooks/useSelectFile";
-import submitHandler from "./utility/submitHandler";
-import Catogary from "./Category/Category";
-import useUser from "@/hooks/useUser";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { eventHubState } from "@/atoms/EventAtoms";
 import { useRouter } from "next/navigation";
-import { BsEnvelopeExclamation } from "react-icons/bs";
+import { useSetRecoilState } from "recoil";
+import Catogary from "./Category/Category";
+import submitHandler from "./utility/submitHandler";
 
 type EventDataProps = {
   eventName: string;
@@ -59,7 +56,7 @@ const HostEvent = () => {
   const { getUser, eventState } = useUser();
   const userData = eventState.userData;
 
-  const [imageFile, setImageFile] = useState<File | string>("");
+  const [imageFile, setImageFile] = useState<File | undefined>();
   const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(category[0]);
   const setEventState = useSetRecoilState(eventHubState);
@@ -268,7 +265,7 @@ const HostEvent = () => {
                   Upload Image
                 </Box>
                 <Text className="col-span-3 ml-2 flex items-center text-[0.9rem] ">
-                  {imageFile ? imageFile?.name : "No File Choosen"}
+                  {imageFile ? imageFile?.name! : "No File Choosen"}
                 </Text>
               </div>
 

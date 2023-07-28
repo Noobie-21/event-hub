@@ -1,7 +1,4 @@
-import useFilter from "@/hooks/useFilter";
 import { Box, Text } from "@chakra-ui/react";
-import Link from "next/link";
-import React from "react";
 
 type Props = {
   bg: string;

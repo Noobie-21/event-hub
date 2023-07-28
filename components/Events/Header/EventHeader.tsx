@@ -5,7 +5,7 @@ import { auth } from "@/firebase/firebaseConfig";
 import useFilter from "@/hooks/useFilter";
 import { Flex, FormLabel } from "@chakra-ui/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useRecoilState } from "recoil";
 

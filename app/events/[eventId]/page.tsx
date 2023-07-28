@@ -1,15 +1,12 @@
 "use client";
-import { eventHubState } from "@/atoms/EventAtoms";
 import EventDetailsPage from "@/components/Events/EventDetailsPage/EventDetails";
 import Loader from "@/components/Loader/Loader";
-import { auth, firestore } from "@/firebase/firebaseConfig";
+import { auth } from "@/firebase/firebaseConfig";
 import useEventDetails from "@/hooks/useEventDetails";
 import { Flex } from "@chakra-ui/react";
-import { Timestamp, doc } from "firebase/firestore";
 import { useParams, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useRecoilValue } from "recoil";
 
 type Props = {};
 

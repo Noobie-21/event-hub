@@ -1,7 +1,5 @@
-import { Box, Flex, FormLabel, Text } from "@chakra-ui/react";
-import { Timestamp } from "firebase/firestore";
+import { Flex, FormLabel, Text } from "@chakra-ui/react";
 import moment from "moment";
-import React from "react";
 import { BsDot } from "react-icons/bs";
 
 type Props = {

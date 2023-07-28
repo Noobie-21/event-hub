@@ -1,7 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
 import { Divider, Flex, Image, Text } from "@chakra-ui/react";
 import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 type CardProps = {

@@ -1,8 +1,7 @@
+import { authModalState } from "@/atoms/AuthModalAtom";
 import { Button, Flex } from "@chakra-ui/react";
-import React from "react";
 import { motion } from "framer-motion";
 import { useSetRecoilState } from "recoil";
-import { authModalState } from "@/atoms/AuthModalAtom";
 
 const InvitationPage = () => {
   const setAuthModalState = useSetRecoilState(authModalState);

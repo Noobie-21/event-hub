@@ -1,15 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { FaQuoteLeft } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination, A11y } from "swiper/modules";
+import { A11y, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCustomButton from "./CustomSwiper";
-import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
-import { useAnimation, motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { Flex, Image, Text } from "@chakra-ui/react";
 
 interface Objects {
   title?: string;

@@ -1,5 +1,6 @@
 "use client";
 import { auth, firestore } from "@/firebase/firebaseConfig";
+import useUser from "@/hooks/useUser";
 import {
   Button,
   Flex,
@@ -8,16 +9,12 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import { collection, doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useAuthState, useUpdatePassword } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import submitHandler from "./utility/submitHandler";
-import useEventDetails from "@/hooks/useEventDetails";
-import useUser from "@/hooks/useUser";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { eventHubState } from "@/atoms/EventAtoms";
 type DashboardCard2Props = {
   name: string;
   email: string;

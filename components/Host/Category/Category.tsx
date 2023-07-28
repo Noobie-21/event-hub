@@ -1,6 +1,6 @@
-import { Dispatch, Fragment, SetStateAction, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { BsChevronUp, BsChevronExpand } from "react-icons/bs";
+import { Dispatch, Fragment, SetStateAction } from "react";
+import { BsChevronExpand } from "react-icons/bs";
 
 // const category = [
 //   "dance",

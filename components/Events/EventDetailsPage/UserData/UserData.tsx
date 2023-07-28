@@ -1,7 +1,5 @@
 import { Flex, Image, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import React from "react";
-import { Button } from "react-rainbow-components";
 
 type Props = {
   host: {

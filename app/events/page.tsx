@@ -3,7 +3,7 @@ import Events from "@/components/Events/Events";
 import Loader from "@/components/Loader/Loader";
 import { auth } from "@/firebase/firebaseConfig";
 import { Flex } from "@chakra-ui/react";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 

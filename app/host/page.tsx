@@ -2,9 +2,9 @@
 import HostEvent from "@/components/Host/Host";
 import Loader from "@/components/Loader/Loader";
 import { auth } from "@/firebase/firebaseConfig";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 type Props = {};

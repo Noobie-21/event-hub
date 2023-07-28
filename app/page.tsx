@@ -1,12 +1,12 @@
 "use client";
 import LandingPage from "@/components/LandingPage/LandingPage";
-import { auth } from "@/firebase/firebaseConfig";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import Loader from "@/components/Loader/Loader";
+import { auth } from "@/firebase/firebaseConfig";
 import { Flex } from "@chakra-ui/react";
 import { Metadata } from "next";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const metadata: Metadata = {
   title: "Event-Hub",

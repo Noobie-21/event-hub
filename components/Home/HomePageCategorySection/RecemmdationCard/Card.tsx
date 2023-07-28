@@ -1,8 +1,7 @@
 "use client";
-import Link from "next/link";
-import React, { useState } from "react";
-import { Flex, Text, Image, Box, Button, Skeleton } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Skeleton, Text } from "@chakra-ui/react";
 import moment from "moment";
+import { useState } from "react";
 
 type Props = {
   image: string;

@@ -1,10 +1,10 @@
 "use client";
-import "./globals.css";
+import Layout from "@/components/Layout/Layout";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Providers } from "./providers";
 import { RecoilRoot } from "recoil";
-import Layout from "@/components/Layout/Layout";
+import "./globals.css";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 

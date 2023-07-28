@@ -1,10 +1,9 @@
 "use client";
-import { Container, Divider, Flex } from "@chakra-ui/react";
-import React from "react";
+import { Divider } from "@chakra-ui/react";
 import BannerSection from "./LandingPageBannerSection/LandingPageBanner";
 import LandingPageInfoSection from "./LandingPageInfoSection";
-import TestonomialSection from "./LandingPageTestonomialSection/LnadingPageTestonomial";
 import InvitationPage from "./LandingPageInviteSection/LandingInvitation";
+import TestonomialSection from "./LandingPageTestonomialSection/LnadingPageTestonomial";
 
 const LandingPage = () => {
   return (

@@ -1,18 +1,15 @@
-import { auth, firestore, storage } from "@/firebase/firebaseConfig";
-import useUser, { userDataProps } from "@/hooks/useUser";
+import { firestore, storage } from "@/firebase/firebaseConfig";
+import { userDataProps } from "@/hooks/useUser";
 import { User } from "firebase/auth";
 import {
-  Timestamp,
   addDoc,
   collection,
   doc,
   serverTimestamp,
-  updateDoc,
+  updateDoc
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { NextRouter } from "next/router";
 import { Dispatch, SetStateAction } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 type eventDataProps = {
   eventName: string;
@@ -36,7 +33,7 @@ type eventErrorProps = {
 interface submitHandlerArgs {
   eventData: eventDataProps;
   setFormError: Dispatch<SetStateAction<eventErrorProps>>;
-  imageFile: File | string;
+  imageFile: File | undefined;
   setLoading: Dispatch<SetStateAction<boolean>>;
   setFormErrorState: Dispatch<SetStateAction<boolean>>;
   setEventData: Dispatch<SetStateAction<eventDataProps>>;
@@ -122,7 +119,7 @@ submitHandlerArgs) => {
       ...intitalFormErrorStates,
       category: "Please! Select the category",
     });
-  } else if (imageFile.length < 1) {
+  } else if (imageFile!.length < 1) {
     setFormErrorState(true);
     setFormError({
       ...intitalFormErrorStates,

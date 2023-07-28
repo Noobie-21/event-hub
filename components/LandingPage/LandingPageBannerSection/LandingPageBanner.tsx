@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { Button, Flex, Text } from "@chakra-ui/react";
-import { useSetRecoilState } from "recoil";
 import { authModalState } from "@/atoms/AuthModalAtom";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebaseConfig";
+import { Button, Flex, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useSetRecoilState } from "recoil";
 
 const BannerSection = () => {
   const setAuthModalState = useSetRecoilState(authModalState);
