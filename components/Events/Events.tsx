@@ -21,7 +21,7 @@ const Events = ({ userLoader }: Props) => {
       ) : (
         <>
           <EventHeader />
-          <Flex className="flex-wrap flex-col justify-center items-center md:items-start md:flex-row gap-5 w-full">
+          <Flex className="flex-wrap flex-col  items-center md:items-start md:flex-row gap-5 w-full">
             {eventState.events.length < 1 && !loading ? (
               <Flex className="justify-center items-center w-full ">
                 <EventNotFound />
