@@ -11,13 +11,13 @@ import { A11y, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCustomButton from "./CustomSwiper";
 
-interface Objects {
-  title?: string;
+type testimonialDataType = {
+  title: string;
   body: string;
   name: string;
   location: string;
   avatar: string;
-}
+};
 
 const TestonomialSection = () => {
   const animation = useAnimation();
@@ -37,7 +37,7 @@ const TestonomialSection = () => {
     }
   }, [inView]);
 
-  const testimonialData: Objects[] = [
+  const testimonialData = [
     {
       title: "Best place to find events.",
       body: "EventHub is by far the best place to find eventhubs near me. It is super easy to use has a very minimal user interface and checks all the boxes for me. I can't stop recommending it to others since it is such a nice platform thankyou all the folks at meethub for making this platform.",
@@ -83,34 +83,35 @@ const TestonomialSection = () => {
           modules={[Pagination, Navigation, A11y]}
           className="mySwiper  md:w-1/2 lg:w-[70vw] h-[70vh]  lg:h-96  rounded-md gap-4 cursor-grab "
         >
-          {testimonialData.map((review, i) => {
-            return (
-              <SwiperSlide key={i}>
-                <Flex className="mb-4 mt-5 p-8 flex-col justify-center items-center ">
-                  <FaQuoteLeft className="text-slate-500" />
-                  <Text className="text-lg mb-2 text-indigo-500 md:text-3xl lg:text-3xl">
-                    {review.title}
-                  </Text>
-                  <Text className="text-sm  md:text-lg lg:text-lg  lg:font-bold text-slate-500 relative text-center">
-                    {review.body}
-                  </Text>
-                </Flex>
-                <Flex className="flex gap-3 items-center w-full ">
-                  <Flex>
-                    <Image
-                      src={review.avatar}
-                      alt="EventHub"
-                      className="w-20 lg:w-24  rounded-full object-cover object-center "
-                    />
+          {testimonialData &&
+            testimonialData.map((review, i) => {
+              return (
+                <SwiperSlide key={i}>
+                  <Flex className="mb-4 mt-5 p-8 flex-col justify-center items-center ">
+                    <FaQuoteLeft className="text-slate-500" />
+                    <Text className="text-lg mb-2 text-indigo-500 md:text-3xl lg:text-3xl">
+                      {review!.title}
+                    </Text>
+                    <Text className="text-sm  md:text-lg lg:text-lg  lg:font-bold text-slate-500 relative text-center">
+                      {review!.body}
+                    </Text>
                   </Flex>
-                  <Flex className="text-sm md:text-md  md:font-bold lg:text-md lg:font-bold  flex-col">
-                    <Text className="">{review.name}</Text>
-                    <Text>{review.location}</Text>
+                  <Flex className="flex gap-3 items-center w-full ">
+                    <Flex>
+                      <Image
+                        src={review!.avatar}
+                        alt="EventHub"
+                        className="w-20 lg:w-24  rounded-full object-cover object-center "
+                      />
+                    </Flex>
+                    <Flex className="text-sm md:text-md  md:font-bold lg:text-md lg:font-bold  flex-col">
+                      <Text className="">{review!.name}</Text>
+                      <Text>{review!.location}</Text>
+                    </Flex>
                   </Flex>
-                </Flex>
-              </SwiperSlide>
-            );
-          })}
+                </SwiperSlide>
+              );
+            })}
           <SwiperCustomButton />
         </Swiper>
       </motion.div>
