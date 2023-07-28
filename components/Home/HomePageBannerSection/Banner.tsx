@@ -18,7 +18,7 @@ const Banner = (props: Props) => {
         className=" h-full  shadow-lg  w-3/4  overflow-hidden "
         borderRadius={"40% 60% 64% 36% / 30% 34% 66% 70% "}
       >
-        <Image src={"/images/anime.jpg"} className="h-full" bgSize={"cover"} />
+        <Image src={"/event.jpg"} className="h-full w-full" bgSize={"cover"} />
       </Flex>
     </Flex>
   );
