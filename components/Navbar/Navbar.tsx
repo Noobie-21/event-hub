@@ -18,17 +18,18 @@ const Navbar = ({}: NavbarProps) => {
     <Flex
       width="100%"
       height="60px"
-      className="bg-violet-300 items-center p-2 justify-between relative"
+      className="bg-violet-300 items-center p-2 justify-between relative "
     >
       <Link href={`${user?.uid ? "/home" : "/"}`}>
         <Image src="pngimage/logo.png" height={"50px"} />
       </Link>
       {user ? (
-        <Flex className="mr-14 gap-2">
+        <Flex className=" gap-2">
           <MenuItems />
+          <ColorModeSwitcher />
         </Flex>
       ) : (
-        <Flex className="mr-14 gap-2" color={{}}>
+        <Flex className="gap-2" color={{}}>
           <AuthModal />
           <Button
             variant="outline"
@@ -44,10 +45,9 @@ const Navbar = ({}: NavbarProps) => {
           >
             Sign Up
           </Button>
+          <ColorModeSwitcher />
         </Flex>
       )}
-
-      <ColorModeSwitcher />
     </Flex>
   );
 };

@@ -118,7 +118,7 @@ const HostEvent = () => {
       <form onSubmit={handleSubmit}>
         <FormControl className="relative">
           <Flex
-            className=" w-[30rem]  flex-col gap-6 mb-6 "
+            className=" md:w-[30rem] w-[22rem]  flex-col gap-6 mb-6 "
             p={{ base: 6, md: 0 }}
           >
             <Text className="text-center text-3xl font-bold uppercase text-violet-300">

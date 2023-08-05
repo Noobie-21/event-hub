@@ -62,6 +62,7 @@ export const category = [
   "public speaking",
   "debate",
 ];
+
 interface EventHubState {
   events: EventAtomState[];
   userData: UserData;

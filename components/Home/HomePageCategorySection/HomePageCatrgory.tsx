@@ -46,12 +46,12 @@ const HomePageCategory = (props: Props) => {
     onFilter(item);
   };
   return (
-    <Flex className=" h-fit w-full flex-col  items-center p-6 ">
-      <Flex className=" p-4  flex-col  ">
-        <Text className="text-[2rem] text-violet-600 mb-4 underline">
+    <Flex className=" h-fit w-full flex-col  items-center p-6  ">
+      <Flex className=" p-4  flex-col   ">
+        <Text className="text-[2rem] text-violet-600 mb-4 ml-2 underline w-[90%] text-center md:text-start">
           Recommendation meetups for you
         </Text>
-        <Flex className="h-fit w-full flex-wrap ">
+        <Flex className="h-fit w-full flex-wrap p-4 gap-2 ">
           {eventState.filterData.map((item) => {
             return (
               <Link href={`/events/${item.eventId}`} key={item.eventId}>
@@ -66,10 +66,10 @@ const HomePageCategory = (props: Props) => {
           })}
         </Flex>
         <Flex className="p-4 flex-col">
-          <Text className="text-[2rem] text-violet-600 mb-2 underline">
+          <Text className="text-[2rem] text-violet-600 mb-2 underline md:text-start text-center">
             Browse by category
           </Text>
-          <Flex className="gap-8 items-center px-4 flex-wrap">
+          <Flex className="gap-8 items-center px-4 flex-wrap justify-center">
             {category.map((item, i) => {
               return (
                 <Link

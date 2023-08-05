@@ -26,7 +26,7 @@ const RecommedationSection = (props: Props) => {
   // console.log(cultureEvent, techEvent);
 
   return (
-    <Flex className="h-full w-full p-4 flex-col">
+    <Flex className="h-full w-full p-4 flex-col ">
       <Card1 techEvent={techEvent} />
       <Divider />
       <Card2 event={cultureEvent} />

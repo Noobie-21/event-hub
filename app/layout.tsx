@@ -9,7 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: "Event Hub",
   description:
     "Event-hub is a place where you can host , attend and see other events you like, best place to meet other people tooo",

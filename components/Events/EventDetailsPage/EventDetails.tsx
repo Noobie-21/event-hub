@@ -48,7 +48,7 @@ const EventDetailsPage = ({
       <Flex className="grid md:grid-cols-5   ">
         <Flex className="md:col-span-4 row-span-1  p-6 ">
           <Flex
-            className="w-full flex-col  border border-slate-500"
+            className="md:w-full w-80 flex-col  border border-slate-500"
             borderRadius={"6px 6px 0px 0px"}
           >
             <Flex className="h-1/2 w-full ">
@@ -56,7 +56,7 @@ const EventDetailsPage = ({
                 <Skeleton width={"100%"} borderRadius={"6px 6px 0px 0px"} />
               )}
               <Image
-                className="w-full"
+                className="md:w-full w-80"
                 src={eventImage}
                 borderRadius={"6px 6px 0px 0px"}
                 alt="Sunset in the mountains"
@@ -65,7 +65,7 @@ const EventDetailsPage = ({
               />
             </Flex>
             <Flex className=" w-full h-full grid md:grid-cols-3  ">
-              <Flex className="md:col-span-1 row-span-1 w-full h-fit justify-center p-4 bg-slate md:flex-col gap-4 ">
+              <Flex className="md:col-span-1 hidden md:flex  w-full h-fit justify-center p-4 bg-slate md:flex-col gap-4 ">
                 <UserData host={host} userId={userId} />
                 {/* hello there */}
                 <EventLoactionCard location={location} timeStamp={timeStamp} />

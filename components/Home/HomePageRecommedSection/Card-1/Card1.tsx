@@ -9,7 +9,7 @@ type Props = {
 const Card1 = ({ techEvent }: Props) => {
   //   console.log(techEvent, "Hello");
   return (
-    <Flex className="flex-col mb-3">
+    <Flex className="flex-col mb-3 ">
       <Text className="text-[2rem] mb-3">Events for "techy" people</Text>
       <Flex
         className="h-full w-full gap-2 md:flex-row flex-col "

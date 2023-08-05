@@ -10,7 +10,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useSetRecoilState } from "recoil";
 import { toast } from "react-toastify";
@@ -38,22 +38,28 @@ const Login = (props: Props) => {
     event.preventDefault();
 
     const success = await signInWithEmailAndPassword(data.email, data.password);
-    // console.log(userError?.code, ": Error while login");
+    console.log(userError?.message);
+
     if (success) {
       toast.success("Welcome Back");
       return;
     }
-    if (
-      userError?.code === "auth/wrong-password" ||
-      userError?.code === "auth/too-many-requests"
-    ) {
-      setError(true);
-      setFormError("Please check the credential");
-    } else if (userError?.code === "auth/user-not-found") {
-      setError(true);
-      setFormError("Please check the credential");
-    }
   };
+
+  useEffect(() => {
+    if (userError) {
+      if (
+        userError?.code === "auth/wrong-password" ||
+        userError?.code === "auth/too-many-requests"
+      ) {
+        setError(true);
+        setFormError("Please check the credential");
+      } else if (userError?.code === "auth/user-not-found") {
+        setError(true);
+        setFormError("Please check the credential");
+      }
+    }
+  }, [user, loading, userError]);
   return (
     <Stack spacing="6">
       <form onSubmit={handleSubmit}>

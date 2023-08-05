@@ -21,6 +21,11 @@
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .overflow-scrollbar::-webkit-scrollbar {
   display: none;
 }

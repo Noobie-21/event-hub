@@ -28,7 +28,7 @@ const Events = ({ userLoader }: Props) => {
               </Flex>
             ) : (
               <>
-                {eventState.events &&
+                {(eventState.events || !loading) &&
                   eventState.events.map((event) => {
                     return (
                       <Card

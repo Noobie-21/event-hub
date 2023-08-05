@@ -14,7 +14,7 @@ const Card = ({ amount, image, timeStamp, title }: Props) => {
   // console.log(moment(new Date(timeStamp)).format("DD MM"));
   const [loading, setLoading] = useState(true);
   return (
-    <Flex className=" m-1 w-96 ">
+    <Flex className="  md:w-96 w-80 ">
       <Flex className="w-full  h-fit border rounded-lg roboto ">
         <Flex className="">
           {loading && (
