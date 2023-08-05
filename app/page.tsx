@@ -8,10 +8,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const metadata: Metadata = {
-  title: "Event-Hub",
-};
-
 export default function Home() {
   const [user, userLoading] = useAuthState(auth);
   const [loading, setLoading] = useState<Boolean>(false);

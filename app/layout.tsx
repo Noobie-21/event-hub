@@ -1,10 +1,7 @@
-"use client";
 import Layout from "@/components/Layout/Layout";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { RecoilRoot } from "recoil";
 import "./globals.css";
-import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,14 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <RecoilRoot>
-          <Providers>
-            <Layout>
-              {children}
-              <Analytics />
-            </Layout>
-          </Providers>
-        </RecoilRoot>
+        <Layout>
+          {children}
+          <Analytics />
+        </Layout>
       </body>
     </html>
   );

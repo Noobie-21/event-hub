@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import HomePageSection from "@/components/Home/Home";
+import { Metadata } from "next";
 
 const HomePage = () => {
   const [user, userLoading] = useAuthState(auth);
